@@ -26,6 +26,13 @@ NVIDIA Jetson Nano Developer Kit (4GB)
 - 5v power supply with microUSB cable
 - fan cooler (optional)
 
+## Get after it...
+There's little (no) point in my explaining how to make your Jetson bootable, as it's all right at the following:  
+https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
+
+Good luck.  I'll revisit this if I decide to run Fedora, etc...  
+
+NOTE:  The Nano has an issue with the Mac Address
 
 
 ## References
