@@ -32,10 +32,12 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
 
 Good luck.  I'll revisit this if I decide to run Fedora, etc...  
 
-NOTE:  The Nano has an issue with the Mac Address
+NOTE:  The Nano has an issue with the Mac Address appearing as "00:00:00:00:00:01".
+Review Foo/Firmware_Update-NVIDIA_Jetson_Nano.md
+
 
 
 ## References
 
 ### Gear Links
-https://www.amazon.com/gp/product/B01BBZJ31Y/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1[Quick Charge 3.0, AUKEY USB Wall Charger (Quick Charge 2.0 Compatible), Fast Charger ]
+[Quick Charge 3.0, AUKEY USB Wall Charger (Quick Charge 2.0 Compatible), Fast Charger ](https://www.amazon.com/gp/product/B01BBZJ31Y/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
