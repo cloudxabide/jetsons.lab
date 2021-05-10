@@ -9,7 +9,6 @@ I am creating this repo in an opinionated way, demonstrating what *I* was trying
 NOTE:  I am LITERALLY starting at ZERO here (Spring 2021).  I have a project at work focusing on something similar, and I wanted to get some rudimentary exposure to k3s and this seemed like the best and most fun way to achieve t
 hat goal.  Side benefit, I'll have some really cool hardware to play with AI later.
 
-
 ## Requirements
 Internet Access
 PC/Mac with SD card reader
@@ -48,7 +47,8 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
 Good luck.  I'll revisit this if I decide to run Fedora, etc...  
 
 NOTE:  The Nano has an issue with the Mac Address appearing as "00:00:00:00:00:01".
-Review Foo/Firmware_Update-NVIDIA_Jetson_Nano.md
+Review 
+[Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
 
 ## Optics
 This setup is fairly visually appealing, I think  
