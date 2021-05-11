@@ -1,4 +1,6 @@
 # Install_K8s
+At this point, I do not have a favored or even successful method.  I am starting to collect a bunch of links 
+to different method/approach.
 
 ## Kubeadm
 Firstly, install kubeadm
@@ -8,6 +10,29 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 Then Create your cluster
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
+
+## MicroK8s
+https://microk8s.io/
+
+On all nodes (apparently with a slight delay between each execution)
+```
+sudo snap install microk8s --classic
+````
+
+On the "primary"
+```
+sudo su -
+microk8s status --wait-ready
+microk8s kubectl get nodes
+microk8s add-node
+
+while true; do  SLEEPYTIME=5; echo "CRTL-C to stop checking"; microk8s kubectl get nodes; echo; while [ $SLEEPYTIME -gt 0 ]; do echo -ne "Check again in:  $SLEEPYTIME\033[0K\r"; sleep 1; : $((SLEEPYTIME--)); done;  done
+```
+
+On all the "non-primary" nodes
+```
+microk8s join {URL from above}
+```
 
 ## Kurl
 While this appears to not be ready for ARM, it's still worth a look

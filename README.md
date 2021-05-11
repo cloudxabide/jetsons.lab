@@ -37,7 +37,7 @@ This is what I consider "essential" and the prices I paid (Spring 2021).  I won'
 
 | Item                              | Qty | Price  | Link | Part Number |
 |:---------------------------------:|:---:|:------:|:-----|:------|
-| Nano Stand                        |  1  | $69    | [GeekPi Case w/Fans](https://www.amazon.com/gp/product/B085XSPV7G/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) | |
+| Nano Stand                        |  1  | $69    | [GeekPi Case w/Fans](https://www.amazon.com/gp/product/B085XSPV7G/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) | ZP-0089 |
 |                           total   | -   | 69     | | |
 
 ## Get after it...
@@ -51,6 +51,11 @@ Review
 [Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
 
 ## Optics
+Top | Elroy
+2nd | Jane
+3rd | dunno
+4th | no idea
+
 This setup is fairly visually appealing, I think  
 
 ![Cluster View - Front](images/da_cluster_front.png)
@@ -59,4 +64,7 @@ This setup is fairly visually appealing, I think
 ## References
 
 ### Gear Links
-[Quick Charge 3.0, AUKEY USB Wall Charger (Quick Charge 2.0 Compatible), Fast Charger ](https://www.amazon.com/gp/product/B01BBZJ31Y/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+[Quick Charge 3.0, AUKEY USB Wall Charger (Quick Charge 2.0 Compatible), Fast Charger ](https://www.amazon.com/gp/product/B01BBZJ31Y/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)  
+[RaspberryPi Rack GeekPi](https://www.seeedstudio.com/Rack-Tower-Pro-p-4676.html)  
+[RaspberryPi Rack Documenation - GeekPi](https://wiki.52pi.com/index.php/Rack_Tower_Pro_SKU:_ZP-0089)  
+
