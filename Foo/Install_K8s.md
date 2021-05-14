@@ -3,12 +3,12 @@ At this point, I do not have a favored or even successful method.  I am starting
 to different method/approach.
 
 ## Kubeadm
-Firstly, install kubeadm
+NOTE: kubeadm apparently requires you to set SELinux to permissive mode.
 
+Firstly, install kubeadm
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 Then Create your cluster
-
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
 
 ## MicroK8s
