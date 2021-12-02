@@ -56,12 +56,18 @@ Review
 [Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
 
 ## Optics
-Top | Elroy
-2nd | Jane
-3rd | dunno
-4th | no idea
-
 This setup is fairly visually appealing, I think  
+```
+| -------------- |
+|     George     |
+| -------------- |
+|      Jane      |
+| -------------- |
+|      Elroy     |
+| -------------- |
+|      Judy      |
+| -------------- |
+```
 
 ![Cluster View - Front](images/da_cluster_front.png)
 ![Cluster View - Rear](images/da_cluster_rear.png)
