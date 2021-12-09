@@ -22,8 +22,8 @@ mkdir ~mansible; chown mansible:mansible ~mansible
 su - mansible -c "echo | ssh-keygen -trsa -b2048 -N ''"
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvG26KjNmcBJ8LSgAL6cpJTj2k3dlTwvbByUGcv5pVn3SJTQpOCOFDU1BOcXWUqiBmuYiDcn6ekdVB9rPR5VduBuGmxWbOUk17IF4zeFZ1DZdaqFWA5XhPTIqBWG/hiXfaScbhMOrjIC0v+S0tZAF2ekpKyKOv0lUtG+qxuC7WL9TyHC5ye1RvZf2jPtzCQn/iDskNzPrL7ajczniVa2xWf9LXUOTEpGG3W/GxVBM8D+2k62u11fPULnpijp7ylOIryqbdcYSP8TARj1tU5fod/uwfSiG2sPqrIvXVwRJ8bJJwTyL3qPfFkznwcAHqxC7IQ2dfgcPK4jTX9usqhcXJ mansible@rh8-util-srv02.matrix.lab" > /home/mansible/.ssh/authorized_keys && chmod 0600 /home/mansible/.ssh/authorized_keys && chown mansible:mansible /home/mansible/.ssh/*
 
-# I guess systemd was the gateway drug to all kinds of nonsense.  I am sure there is a
-#  reason for this change, but holy crap this is annoying.  Seriously.
+# I guess systemd was the gateway drug to all kinds of nonsense.  I am sure 
+# there is a reason for this change, but holy crap this is annoying.  Seriously.
 cat << EOF > /etc/systemd/resolved.conf.d/dns_servers.conf
 [Resolve]
 DNS=10.10.10.121 10.10.10.122
@@ -36,17 +36,16 @@ sudo systemctl set-default multi-user.target
 # To restart graphical login
 # sudo systemctl isolate graphical.target
 
-
 # Enable "high-power" mode (10w)
 sudo nvpmodel -m 0
-
 
 # Enable SNMP on the nodes
 sudo apt update && sudo apt -y install snmpd
 mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf-`date +%F`
 wget https://raw.githubusercontent.com/cloudxabide/matrix.lab/main/Files/etc_snmp_snmpd.conf -O /etc/snmp/snmpd.conf
 restorecon -Fvv /etc/snmp/snmpd.conf
-echo "agentAddress udp:0.0.0.0:161" >> /etc/snmp/snmpd.conf
+# This customization is only for Ubuntu
+echo "agentAddress udp:161" >> /etc/snmp/snmpd.conf
 systemctl enable snmpd --now
 
 # update hosts file
