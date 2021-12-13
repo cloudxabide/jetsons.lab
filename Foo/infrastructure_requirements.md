@@ -1,7 +1,7 @@
 # Infrastructure Requirements
 
 ## DNS
-Not a requirement, I suppose, more of a recommendation - use DNS.
+Not a requirement, I suppose, more of a recommendation - use some fashion of DNS for your environment. (I also have static IPs assigned to my Nanos via DHCP..
 
 I use Red Hat Identity Management in my Lab for DNS (and other things).
 

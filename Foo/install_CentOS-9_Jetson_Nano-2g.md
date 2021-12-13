@@ -17,13 +17,24 @@ I had wanted to use CentOS Stream on my laptop to do the prep work.  I discovere
 ## What you need (software)
 * [Fedora Workstation](https://getfedora.org/en/workstation/download/)
 
+## The Steps (high-level)
 
-## The steps
-Create installation media on USB stick using the Fedora Media Writer (it really IS simple).  Go to https://getfedora.org/en/workstation/download/ - grab the Writer and start it up (it will pull down the current Fedora ISO for you) 
+* collect all the requirements (physical and software)  
+* Review the entire process prior to starting.  This is NOT my typical approach to problems (if I am being forthcoming).  However, I REALLY think it helps for this procedure - especially if you are as much of a n00b as I am.  
+* Flash the (??) on the Nvidia Jetson Nano   
+* Install a CentOS disk image on to an SD card  
+* Boot to CentOS 9
 
+## The steps (actual)
+Create installation media on USB stick using the Fedora Media Writer (it really IS simple).  Go to https://getfedora.org/en/workstation/download/ - grab the Writer and start it up (it will pull down the current Fedora ISO for you)   
+Install Fedora - there is little value in having me detail how to install Fedora here.  There are tons of resources out there.  
+
+Once you have Fedora installed and running, install the following packages
 ```
-sudo dnf -y install qemu-user-static usbutils uboot-images-armv8 arm-image-installer
+sudo dnf -y install qemu-user-static usbutils uboot-images-armv8 arm-image-installer sreen minicom
 ```
+
+Pull down and unpack the Nvidia bits
 ```
 mkdir ~/Downloads/Nvidia_Jetson; cd $_
 # wget -r https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide
@@ -37,15 +48,24 @@ SAMPLE_FS_PACKAGE=$(find * -type f -name "Tegra_Linux_Sample-Root-Filesystem_R*t
 echo "BOARD: $BOARD"
 echo "L4T_RELEASE_PACKAGE: $L4T_RELEASE_PACKAGE"
 echo "SAMPLE_FS_PACKAGE: $SAMPLE_FS_PACKAGE"
+```
 
+This process I have gathered from Nvidia (and applied some minor tweaks)
+```
+  tar xf ${L4T_RELEASE_PACKAGE}
+  cd Linux_for_Tegra/rootfs/
+  sudo tar xpf ../../${SAMPLE_FS_PACKAGE}
+  cd ..
+  sudo ./apply_binaries.sh
+```
 
 
  
 ## References
 https://nullr0ute.com/2020/11/installing-fedora-on-the-nvidia-jetson-nano/  
 [Nvidia Linux for Tegra](https://developer.nvidia.com/embedded/linux-tegra) L4T  
-[NVIDIA JETSON LINUX DRIVER PACKAGE QUICK START GUIDE](https://developer.download.nvidia.com/embedded/L4T/r32_Release_v4.4/r32_Release_v4.4-GMC3/T210/l4t_quick_start_guide.txt)
+[NVIDIA JETSON LINUX DRIVER PACKAGE QUICK START GUIDE](https://developer.download.nvidia.com/embedded/L4T/r32_Release_v4.4/r32_Release_v4.4-GMC3/T210/l4t_quick_start_guide.txt)  
 https://www.jetsonhacks.com/
 
-* [CentOS 9 Stream](https://centos.org/)
+* [CentOS 9 Stream](https://centos.org/)  
 * [CentOS 8 Stream](https://centos.org/) - for my laptop
