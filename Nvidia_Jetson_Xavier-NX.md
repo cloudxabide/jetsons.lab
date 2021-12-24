@@ -4,10 +4,12 @@
 So - I kind of hate to start off a write-up with a bunch of negative stuff, but... this experience has kind of sucked thus far (and for once, I don't think COVID is to blame).
 
 
-## First Impressions:
+## First Impressions
 ### Seeed Studio
-The first part is regarding the "up-lift" of the Xavier by Seeed Studio.  I ordered the following for $849: 
-Jetson SUB Mini PC-Blue with Jetson Xavier NX module, Aluminium case with cooling fan, 128GB SSD, WiFi, Antennas and pre-installed JetPack System  
+The first part is regarding the "up-lift" of the Xavier by Seeed Studio.  I ordered the following for $849:  
+`Jetson SUB Mini PC-Blue with Jetson Xavier NX module, Aluminium case with cooling fan, 128GB SSD, WiFi, Antennas and pre-installed JetPack System`    
+
+![Nvidia Jetson SUB Mini PC](images/Xavier_unpackaged.jpeg)
 
 I probably should have paid more attention to the fact that there was no "Shipping and Handling" charge.  I have to admit that Seeed shipped it much sooner than they initially had quoted.  
 
@@ -19,6 +21,8 @@ Merchandize Processing: 27.75
 
 So - before I go any futher, Seeed will likely never get my money ever again.  I have bought laptops, 4 other Jetson, etc.. and never had this issue.  
 DHL is borderline criminal for how they handle this.  I did not ask them to prepay my Duty, that is their choice.  So, they optioned to act as the agent and *then* charge me for it, without any prior agreement on my part. (Google "DHL duty lawsuit" and decide for yourself, I guess).  
+OK - so, I buried the link to the Seeed Page down here to ensure you have a better idea of what surprises you may encounter  
+[Jetson SUB Mini PC-Blue with Jetson Xavier NX module, Aluminium case with cooling fan, 128GB SSD, WiFi, Antennas and pre-installed JetPack System](https://www.seeedstudio.com/Jetson-SUB-Mini-PC-Blue-p-5212.html)
 
 ## Things that matter...
 Seeed bundles the Nvidia Jetson Xavier NX in a Case (with wifi, SSD, pre-installed Nvidia Jetpack).  It's actually fairly cool looking and a great idea.  
