@@ -41,3 +41,22 @@ Of course, and as expected, the Ubuntu install boots and runs like a champ.
 ## Hardware Control
 I will most often be running my Xavier headless.  I statically assign an IP address via DHCP once I discover the MAC address and I will also use a USB cable connected to my Fedora laptop
 
+### Check device (from laptop)
+```
+$ lsusb | grep -i nvidia
+Bus 001 Device 005: ID 0955:7020 NVIDIA Corp. L4T (Linux for Tegra) running on Tegra
+```
+
+### Modify fan speed
+NOTE:  the path to the "fan control" seems to differ based on a number of factors
+```
+$ sudo su - -c "echo 128 > /sys/devices/pwm-fan/target_pwm"
+```
+
+### Display memory
+```
+$ free -g
+              total        used        free      shared  buff/cache   available
+Mem:              7           0           6           0           0           6
+Swap:             3           0           3
+```
