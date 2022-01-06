@@ -1,14 +1,11 @@
 # jetsons.lab
-NVidia Jetson Lab Environment - exploring k3s or k8s on ARM
+NVidia Jetson Lab Environment - exploring Microshift (or k3s/k8s) on ARM
 
 ## Goal
-To deploy a k3s/k8s cluster on 4 x NVIDIA Jetson Nano.
-I am creating this repo in an opinionated way, demonstrating what *I* was trying to accomplish.  Substitutions are
- likely possible, and probably would not require modifications of my approach.
+To deploy a Microshift cluster on 4 x NVIDIA Jetson Nano.  
+I am creating this repo in an opinionated way, demonstrating what *I* was trying to accomplish.  Substitutions are likely possible, and probably would not require modifications of my approach.
 
-NOTE:  I am LITERALLY starting at ZERO here (Spring 2021).  I have a project at work focusing on something similar, 
-    and I wanted to get some rudimentary exposure to k3s and this seemed like the best and most fun way to achieve 
-    that goal.  Side benefit, I'll have some really cool hardware to play with AI later.
+NOTE:  I am LITERALLY starting at ZERO here (Spring 2021).  I have a project at work focusing on something similar, and I wanted to get some rudimentary exposure to k3s and this seemed like the best and most fun way to achieve that goal.  Side benefit, I'll have some really cool hardware to play with AI later.
 
 ## Requirements
 Internet Access
@@ -27,7 +24,7 @@ Which also requires
   * 5v power supply with microUSB cable
   * fan cooler (optional)
 
-This is what I consider "essential" and the prices I paid (Spring 2021).  I won't provide links to (all) the retailers as the URLs are literally several lines long.  
+This is what I consider "essential" and the prices I paid (Spring 2021).  I won't provide links to (all) the retailers as the URLs are literally several lines long.   
 I am considering whether the "barrel adapter power supply" is a better option - but, for now, make sure you can provide at *least* 10w per cable.
 
 | Item                              | Qty | Price  | Link | Part Number |
