@@ -25,7 +25,7 @@ Which also requires
   * fan cooler (optional)
 
 This is what I consider "essential" and the prices I paid (Spring 2021).  I won't provide links to (all) the retailers as the URLs are literally several lines long.   
-I am considering whether the "barrel adapter power supply" is a better option - but, for now, make sure you can provide at *least* 10w per cable.
+I decided that the barrel adapter was the better option.  I will leave the USB power adapter in this list as they are approximately the same price.
 
 | Item                              | Qty | Price  | Link | Part Number |
 |:---------------------------------:|:---:|:------:|:-----|:------------|
