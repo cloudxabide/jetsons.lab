@@ -1,5 +1,7 @@
 # Firmware Update-NVIDIA Jetson Nano
 
+## Purpose
+I had an issue with the mac address reporting as all 0's (zero's)
 
 Download https://developer.nvidia.com/embedded/dlc/jetson-nano-developer-kit-ethernet-firmware-2598410
 
