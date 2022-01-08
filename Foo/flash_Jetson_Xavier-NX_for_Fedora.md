@@ -62,12 +62,12 @@ alternate_disk_method() {
 
 # I believe this partition is actually /boot/efi
 mount -o loop,offset=1048576   ${IMG_DIR}/${IMG_NAME}  /mnt/${BASE_NAME}-1
-rsync -tugrpolvv /mnt/1/ /home/jradtke/Downloads/NVidia_Jetson/rootfs-Fedora-Server-35/boot/
+rsync -tugrpolvv /mnt/1/ /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/boot/
 umount /mnt/1
 
 # I believe this partition is actually /boot
 mount -o loop,offset=630194176 ${IMG_DIR}/${IMG_NAME}  /mnt/${BASE_NAME}-2 
-rsync -tugrpolvv /mnt/2/ /home/jradtke/Downloads/NVidia_Jetson/rootfs-Fedora-Server-35/boot/EFI/
+rsync -tugrpolvv /mnt/2/ /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/boot/EFI/
 umount /mnt/2
 }
 
@@ -91,14 +91,14 @@ pvscan --cache
 vgchange -ay
 mount /dev/mapper/fedora_fedora-root /mnt/${BASE_NAME}-3 # 
 
-rsync -tugrpolvv /mnt/${BASE_NAME}-2/  /home/jradtke/Downloads/NVidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/
-rsync -tugrpolvv /mnt/${BASE_NAME}-1/  /home/jradtke/Downloads/NVidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/efi
-rsync -tugrpolvv  /mnt/${BASE_NAME}-3/ /home/jradtke/Downloads/NVidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
+rsync -tugrpolvv /mnt/${BASE_NAME}-2/  /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/
+rsync -tugrpolvv /mnt/${BASE_NAME}-1/  /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/efi
+rsync -tugrpolvv  /mnt/${BASE_NAME}-3/ /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
 
 umount /mnt/${BASE_NAME}-{1,2,3}
 vgchange -an fedora_fedora 
 
-#rsync -tugrpolvv /home/jradtke/Downloads/NVidia_Jetson/rootfs-Fedora-Server-35/ /home/jradtke/Downloads/NVidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
+#rsync -tugrpolvv /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/ /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
 ```
 
 ## Flash the Nvidia Xavier NX
@@ -112,11 +112,11 @@ I run this as root (for now, anyhow)
 You should see the device and will see "7e19" which indicates you are in FRC
 ```
 # lsusb | grep -i nvidia
-Bus 001 Device 006: ID 0955:7e19 NVidia Corp.
+Bus 001 Device 006: ID 0955:7e19 Nvidia Corp.
 ```
 
 ```
-# cd ~jradtke/Downloads/NVidia_Jetson/Linux_for_Tegra-UEFI/
+# cd ~jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/
 # ./flash.sh jetson-xavier-nx-uefi-acpi internal
 *** The target t186ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
