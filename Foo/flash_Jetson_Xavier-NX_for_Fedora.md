@@ -123,7 +123,19 @@ Reset the board to boot from internal eMMC.
 # watch "lsusb | grep -i nvi"
 
 ```
+## Serial Output
+I picked up a
 
+Connect the USB Serial cable to the following pins on J50 (The same connector as the Force Recovery)
+| Pin | Purpose | Cable Color 
+|:--:|:-----|:-----|
+| 3 | Receive | Green |
+| 4 | Transmit | White |
+| 8 | Ground | Black |
+
+UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)
+UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)
+GND (Pin 7) - Ground (Black Wire (GND) -> GND)
 
 ## References
 [NVIDIA Jetson UEFI/ACPI Experimental Firmware Version 1.1.0](https://developer.download.nvidia.com/embedded/L4T/UEFI_Readme_side_car.html)
