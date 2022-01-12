@@ -8,17 +8,16 @@
 * Ubuntu Laptop running 18.04 LTS (I'll explain this more in a different post)
 * USB-A to USB-micro-B cable
 
-
 ## Prerequisites and Setup
 ```
 sudo apt update
 sudo apt upgrade
 sudo apt install minicom
 ln -s /usr/bin/python3 /usr/bin/python
+```
 
 ```
-```
-mkdir ~/Downloads/Nvidia_Jetson/; cd $_
+mkdir -p ~/Downloads/Nvidia_Jetson/Xavier_NX; cd $_
 ```
 ### Download Linux for Tegra (L4T) R32.6.1 release:
 ```
@@ -30,18 +29,22 @@ wget "https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/jetson_lin
 wget "https://developer.nvidia.com/assets/embedded/downloads/nvidia_uefiacpi_experimental_firmware/nvidia-l4t-jetson-uefi-r32.6.1-20211119125725.tbz2"
 ```
 
+### Download Sample Root Filesystem (probably no value in this though)
+```
+wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/tegra_linux_sample-root-filesystem_r32.6.1_aarch64.tbz2
+````
+
 ### Uncompress both tarballs
 NOTE:  Please notice the different tar options being passed in  
 Also, I believe I will be updating this to create specific directories based on use or intent.  i.e. this UEFI creation should/will not be used for a non-UEFI deployment and therefore I'll need a non-modified source for L4T
-```
-tar xjf jetson_linux_r32.6.1_aarch64.tbz2
-tar xpf nvidia-l4t-jetson-uefi-r32.6.1-20211119125725.tbz2
+``
+tar xvjf jetson_linux_r32.6.1_aarch64.tbz2  
+tar xvpf nvidia-l4t-jetson-uefi-r32.6.1-20211119125725.tbz2
 mv Linux_for_Tegra/ Linux_for_Tegra-UEFI/
 ```
 
 ### Summary
 You have pulled down the R32.6.1 standard L4T (Linux for Tegra) bits and then applied the UEFI bits over the directory from the tarball.  I then rename the Linux_for_Tegra directory to indicate that it is non-standard.
-
 
 ## Create the rootfs (Fedora and UEFI)
 
@@ -116,8 +119,8 @@ Bus 001 Device 006: ID 0955:7e19 Nvidia Corp.
 ```
 
 ```
-# cd ~jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/
-# ./flash.sh jetson-xavier-nx-uefi-acpi internal
+# cd ~jradtke/Downloads/Nvidia_Jetson/Xavier_NX/Linux_for_Tegra
+# sudo ./flash.sh jetson-xavier-nx-uefi-acpi internal
 *** The target t186ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
 # watch "lsusb | grep -i nvi"
