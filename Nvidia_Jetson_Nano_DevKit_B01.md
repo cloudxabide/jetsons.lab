@@ -23,3 +23,6 @@ Source: [NVIDIA JETSON LINUX DRIVER PACKAGE QUICK START GUIDE](https://developer
 ## References 
 [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) | 945-13450-0000-100  
 [NVIDIA Dev Kit User Guide](https://developer.download.nvidia.com/assets/embedded/secure/jetson/Nano/docs/NV_Jetson_Nano_Developer_Kit_User_Guide.pdf?lEs1ihOZtCmxEbzRWEIdyueQP9ibiiW4nbX2zubJQdvC2RBPCL8yOTgOKG3jLccgRAAGuPw9zLx0KBdnpxwTLehUA447uIva0N3rylAS4Qe8-2lpgVoyDkw5xOuJMzjIq4HbGSx9PMNgFaFiMpotkHg0EujX4V9Kqn-HQSGBguf_TKtsgn58FdOoP2w_GQpAPZU)
+
+## My hardware
+P3448-0000 - Which is a B01 version of the Nvidia Jetson Nano Developer Kit (AFAIK)
