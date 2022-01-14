@@ -7,6 +7,16 @@ I am creating this repo in an opinionated way, demonstrating what *I* was trying
 
 NOTE:  I am LITERALLY starting at ZERO here (Spring 2021).  I have a project at work focusing on something similar, and I wanted to get some rudimentary exposure to k3s and this seemed like the best and most fun way to achieve that goal.  Side benefit, I'll have some really cool hardware to play with AI later.
 
+## Gear Overview
+
+| Device | Qty | |
+|:------|:--:|-|
+| Nvidia Jetson Nano Devkit 4gb | 3 | |
+| Nvidia Jetson Xavier NX Devkit  | 1 | | 
+| Waveshare JetBot | 1 | |
+| NVIDIA Jetson Mate | 1 | |
+
+
 ## Requirements
 Internet Access
 PC/Mac with SD card reader
@@ -27,6 +37,7 @@ Which also requires
 This is what I consider "essential" and the prices I paid (Spring 2021).  I won't provide links to (all) the retailers as the URLs are literally several lines long.   
 I decided that the barrel adapter was the better option.  I will leave the USB power adapter in this list as they are approximately the same price.
 
+### NVIDIA Jetson Nano Developer Kit (4GB) Setup
 | Item                              | Qty | Price  | Link | Part Number |
 |:---------------------------------:|:---:|:------:|:-----|:------------|
 | NVIDIA Jetson Nano SDK            | 4   | 108    |
@@ -46,8 +57,6 @@ I decided that the barrel adapter was the better option.  I will leave the USB p
 There's little (no) point in my explaining how to make your Jetson bootable, as it's all right at the following:  
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
 
-Good luck.  I'll revisit this if I decide to run Fedora, etc...  
-
 NOTE:  Some NVIDIA Jetson Nano have an issue with the Mac Address appearing as "00:00:00:00:00:01".  
 Review 
 [Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
@@ -60,7 +69,7 @@ This setup is fairly visually appealing, I think
 | -------------- |
 |      Jane      |
 | -------------- |
-|      Elroy     |
+|                |
 | -------------- |
 |      Judy      |
 | -------------- |

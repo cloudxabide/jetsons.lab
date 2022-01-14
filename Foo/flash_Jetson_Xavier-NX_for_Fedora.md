@@ -19,6 +19,7 @@ ln -s /usr/bin/python3 /usr/bin/python
 ```
 mkdir -p ~/Downloads/Nvidia_Jetson/Xavier_NX; cd $_
 ```
+
 ### Download Linux for Tegra (L4T) R32.6.1 release:
 ```
 wget "https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/jetson_linux_r32.6.1_aarch64.tbz2"
@@ -37,7 +38,8 @@ wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/tegra_linux
 ### Uncompress both tarballs
 NOTE:  Please notice the different tar options being passed in  
 Also, I believe I will be updating this to create specific directories based on use or intent.  i.e. this UEFI creation should/will not be used for a non-UEFI deployment and therefore I'll need a non-modified source for L4T
-``
+
+```
 tar xvjf jetson_linux_r32.6.1_aarch64.tbz2  
 tar xvpf nvidia-l4t-jetson-uefi-r32.6.1-20211119125725.tbz2
 mv Linux_for_Tegra/ Linux_for_Tegra-UEFI/
@@ -73,15 +75,22 @@ mount -o loop,offset=630194176 ${IMG_DIR}/${IMG_NAME}  /mnt/${BASE_NAME}-2
 rsync -tugrpolvv /mnt/2/ /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/boot/EFI/
 umount /mnt/2
 }
+```
 
-# You need to open a terminal to see what loopback device is instantiated 
-# You will see the following output after running the next commands
+You need to open a terminal to see what loopback device is instantiated   
+You will see the following output after running the next commands
+```
 dmesg --follow
 # [105533.419629] XFS (loop7): Mounting V5 Filesystem
+```
 
-# Or.. you can run
+ Or.. you can run
+```
 ls -lart /dev/loop*
+```
 
+Mount the devices and copy the content
+```
 losetup -f -P ${IMG_DIR}/${IMG_NAME}           
 DALOOP=$(losetup | grep ${IMG_NAME} | awk '{ print $1 }')
 lsblk | grep $DALOOP 
@@ -105,9 +114,9 @@ vgchange -an fedora_fedora
 ```
 
 ## Flash the Nvidia Xavier NX
-* Place Xavier NX module in Force Reset Mode and power it on
-** For my specific system (Seeed Studio carrier board and NX Developer Kit module), I will place a jumper on pins 9 and 10 (see photo)
 * Connect the USB cable between your laptop and the micro-USB socket on the carrier board
+* Place Xavier NX module in Force Reset Mode and power it on
+  * For my specific system (Seeed Studio carrier board and NX Developer Kit module), I will place a jumper on pins 9 and 10 (see photo)
 
 ### NOTE
 I run this as root (for now, anyhow)
@@ -117,10 +126,11 @@ You should see the device and will see "7e19" which indicates you are in FRC
 # lsusb | grep -i nvidia
 Bus 001 Device 006: ID 0955:7e19 Nvidia Corp.
 ```
+NOTE:  7e19 is specific to the Xavier and other devices may have a different code
 
 ```
-# cd ~jradtke/Downloads/Nvidia_Jetson/Xavier_NX/Linux_for_Tegra
-# sudo ./flash.sh jetson-xavier-nx-uefi-acpi internal
+cd ~jradtke/Downloads/Nvidia_Jetson/Xavier_NX/Linux_for_Tegra-UEFI
+sudo ./flash.sh jetson-xavier-nx-uefi-acpi internal
 *** The target t186ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.
 # watch "lsusb | grep -i nvi"
@@ -130,15 +140,27 @@ Reset the board to boot from internal eMMC.
 I picked up a
 
 Connect the USB Serial cable to the following pins on J50 (The same connector as the Force Recovery)
-| Pin | Purpose | Cable Color 
-|:--:|:-----|:-----|
-| 3 | Receive | Green |
-| 4 | Transmit | White |
-| 8 | Ground | Black |
 
-UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)
-UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)
-GND (Pin 7) - Ground (Black Wire (GND) -> GND)
+| Pin | Purpose / Label | Cable Color 
+|:--:|:-----|:-----|
+| 3 | Receive / UART RXD  | Green |
+| 4 | Transmit / UART TXD | White |
+| 7 | Ground / GND        | Black |
+
+UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)  
+UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)  
+GND (Pin 7) - Ground (Black Wire (GND) -> GND)  
+https://www.jetsonhacks.com/2019/04/19/jetson-nano-serial-console/
+
+Connect the USB Serial cable to the following pins on GPIO (The same connector as the Force Recovery)
+
+| Pin | Purpose / Label | Cable Color 
+|:--:|:-----|:-----|
+| 6 | Ground / GND         | Black |
+| 8 | Receive / UART1_TX   | White |
+| 10 | Transmit / UART1_RX | Green |
+
+https://www.jetsonhacks.com/nvidia-jetson-xavier-nx-gpio-header-pinout/
 
 ## References
 [NVIDIA Jetson UEFI/ACPI Experimental Firmware Version 1.1.0](https://developer.download.nvidia.com/embedded/L4T/UEFI_Readme_side_car.html)
