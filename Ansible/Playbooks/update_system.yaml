@@ -1,0 +1,19 @@
+---
+- hosts: rhel_nodes rhel7_vms rhel8_vms 
+  tasks:
+  - name: Update all installed packages using YUM module
+    yum:
+      name: '*'
+      state: latest
+      update_cache: yes
+      update_only: yes
+    register: yum_update_status
+
+  - name: Remove packates not needed anymore
+    yum:
+      autoremove: yes
+
+  - name: Reboot when packages were updated
+    reboot:
+    when: yum_update_status.changed
+

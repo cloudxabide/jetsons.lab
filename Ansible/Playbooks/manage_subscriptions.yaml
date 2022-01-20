@@ -1,0 +1,24 @@
+---
+- hosts: vms rhel_nodes 
+  tasks:
+  - name: Update all installed packages using YUM module
+    yum:
+      name: '*'
+      state: latest
+      update_cache: yes
+      update_only: yes
+    register: yum_update_status
+
+  - name: Remove packates not needed anymore
+    yum:
+      autoremove: yes
+
+  - name: Reboot when packages were updated
+    reboot:
+    when: yum_update_status.changed
+  - name: Register as user (joe_user) with password (somepass) and auto-subscribe to available content.
+    community.general.redhat_subscription:
+      state: present
+      username: joe_user
+      password: somepass
+      auto_attach: true

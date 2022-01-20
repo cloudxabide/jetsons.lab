@@ -1,0 +1,18 @@
+[all:vars]
+ansible_user=nvidia
+ansible_become=yes
+ansible_become_method=sudo
+ansible_python_interpreter=/usr/bin/python3
+debug_level=2
+
+[kube:children]
+workers
+masters
+
+[workers]
+xavier.jetsons.lab ansible_host=10.10.10.55
+george.jetsons.lab ansible_host=10.10.10.54
+
+[masters]
+jane.jetsons.lab ansible_host=10.10.10.53
+

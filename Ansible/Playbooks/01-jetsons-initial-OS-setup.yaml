@@ -1,0 +1,102 @@
+---
+- name: Initial Host Configuration
+  hosts: kube 
+  vars_files:
+    - ../vars/vars.yaml
+
+# Update OS
+  tasks:
+  - name: Update packages
+    apt:
+      upgrade: dist
+      force_apt_get: yes
+  - name: Check if a reboot is needed for Debian and Ubuntu boxes
+    register: reboot_required_file
+    stat: path=/var/run/reboot-required get_md5=no
+  - name: Reboot the Debian or Ubuntu server
+    reboot:
+      msg: "Reboot initiated by Ansible due to kernel updates"
+      connect_timeout: 5
+      reboot_timeout: 300
+      pre_reboot_delay: 0
+      post_reboot_delay: 30
+      test_command: uptime
+    when: reboot_required_file.stat.exists
+
+# Install Packages
+  - name:  Install curl
+    apt:
+      name: curl
+      update_cache: yes
+
+# Disable IPV6
+  - name: Disable IPv6 with sysctl
+    sysctl: name={{ item }} value=1 state=present reload=yes
+    with_items:
+      - net.ipv6.conf.all.disable_ipv6
+      - net.ipv6.conf.default.disable_ipv6
+      - net.ipv6.conf.lo.disable_ipv6
+
+  - name: Debian | blacklist ipv6 in modprobe
+    lineinfile:
+      dest: /etc/modprobe.d/blacklist.conf
+      line: 'blacklist ipv6'
+      mode: '0644'
+      create: yes
+    when: ansible_os_family == 'Debian'
+ 
+# Create a Swap file
+  - name: Set swap_file variable
+    set_fact:
+      swap_file: "{{swap_file_path}}"
+    tags:
+      - swap.set.file.path
+  - name: Check if swap file exists
+    stat:
+      path: "{{swap_file}}"
+    register: swap_file_check
+    tags:
+      - swap.file.check
+  - name: Create swap file
+    command: fallocate -l {{swap_file_size}} {{swap_file}}
+    when: not swap_file_check.stat.exists
+    tags:
+      - swap.file.create
+  - name: Change swap file permissions
+    file: path="{{swap_file}}"
+          owner=root
+          group=root
+          mode=0600
+    tags:
+      - swap.file.permissions
+  - name: Format swap file
+    become: yes
+    command: "mkswap {{swap_file}}"
+    when: not swap_file_check.stat.exists
+    tags:
+      - swap.file.mkswap
+  - name: Write swap entry in fstab
+    mount: name=none
+           src={{swap_file}}
+           fstype=swap
+           opts=sw
+           passno=0
+           dump=0
+           state=present
+    tags:
+      - swap.fstab
+  - name: Turn on swap
+    become: yes
+    command: swapon -a
+    when: not swap_file_check.stat.exists
+    tags:
+      - swap.turn.on
+  - name: Set swappiness
+    become: yes
+    sysctl:
+      name: vm.swappiness
+      value: "{{swappiness}}"
+    tags:
+      - swap.set.swappiness
+
+
