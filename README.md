@@ -2,6 +2,11 @@
 NVidia Jetson Lab Environment - exploring Microshift (or k3s/k8s) on ARM
 
 ## Goal
+I would like to deploy "Kubernetes" of some sort on small form factor devices.
+
+* [Microshift](https://microshift.io)  
+* 
+
 To deploy a Microshift cluster on 4 x NVIDIA Jetson Nano.  
 I am creating this repo in an opinionated way, demonstrating what *I* was trying to accomplish.  Substitutions are likely possible, and probably would not require modifications of my approach.
 
@@ -15,6 +20,10 @@ NOTE:  Some NVIDIA Jetson Nano have an issue with the Mac Address appearing as "
 Review 
 [Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
 
+How it started...
 ![Cluster View - Front](images/da_cluster_front.png)
 ![Cluster View - Rear](images/da_cluster_rear.png)
+
+How it's going...  
+![My Gear](images/gear_20220116.jpeg)
 

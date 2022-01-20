@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 
 pre() {
@@ -8,16 +8,10 @@ sudo -i
 
 [ `id -u` -ne 0 ] && { echo "ERROR: you should run this as root yo"; exit 9; }
 
-# "Fix" sudo
-cat << EOF >> /etc/sudoers
-
-# Allow members of group wheel to execute any command 
-%wheel ALL=(ALL:ALL) NOPASSWD: ALL
-EOF
+echo "mansible ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/mansible-nopasswd-all
 
 # Setup the "mansible" user
-addgroup --system wheel
-id -u mansible &>/dev/null || useradd -Gwheel -u1001 -c "My Ansible" -d /home/mansible -s /bin/bash -p '$6$MIxbq9WNh2oCmaqT$10PxCiJVStBELFM.AKTV3RqRUmqGryrpIStH5wl6YNpAtaQw.Nc/lkk0FT9RdnKlEJEuB81af6GWoBnPFKqIh.' mansible
+id -u mansible &>/dev/null || useradd -Gsudo -u1001 -c "My Ansible" -d /home/mansible -s /bin/bash -p '$6$MIxbq9WNh2oCmaqT$10PxCiJVStBELFM.AKTV3RqRUmqGryrpIStH5wl6YNpAtaQw.Nc/lkk0FT9RdnKlEJEuB81af6GWoBnPFKqIh.' mansible
 mkdir ~mansible; chown mansible:mansible ~mansible
 su - mansible -c "echo | ssh-keygen -trsa -b2048 -N ''"
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvG26KjNmcBJ8LSgAL6cpJTj2k3dlTwvbByUGcv5pVn3SJTQpOCOFDU1BOcXWUqiBmuYiDcn6ekdVB9rPR5VduBuGmxWbOUk17IF4zeFZ1DZdaqFWA5XhPTIqBWG/hiXfaScbhMOrjIC0v+S0tZAF2ekpKyKOv0lUtG+qxuC7WL9TyHC5ye1RvZf2jPtzCQn/iDskNzPrL7ajczniVa2xWf9LXUOTEpGG3W/GxVBM8D+2k62u11fPULnpijp7ylOIryqbdcYSP8TARj1tU5fod/uwfSiG2sPqrIvXVwRJ8bJJwTyL3qPfFkznwcAHqxC7IQ2dfgcPK4jTX9usqhcXJ mansible@rh8-util-srv02.matrix.lab" > /home/mansible/.ssh/authorized_keys && chmod 0600 /home/mansible/.ssh/authorized_keys && chown mansible:mansible /home/mansible/.ssh/*

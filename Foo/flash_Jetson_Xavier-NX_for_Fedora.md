@@ -45,6 +45,12 @@ tar xvpf nvidia-l4t-jetson-uefi-r32.6.1-20211119125725.tbz2
 mv Linux_for_Tegra/ Linux_for_Tegra-UEFI/
 ```
 
+# For Standard 
+```
+tar xvjf jetson_linux_r32.6.1_aarch64.tbz2  
+tar xvpf tegra_linux_sample-root-filesystem_r32.6.1_aarch64.tbz2 -C Linux_for_Tegra/rootfs/
+```
+
 ### Summary
 You have pulled down the R32.6.1 standard L4T (Linux for Tegra) bits and then applied the UEFI bits over the directory from the tarball.  I then rename the Linux_for_Tegra directory to indicate that it is non-standard.
 
@@ -143,22 +149,22 @@ Connect the USB Serial cable to the following pins on J50 (The same connector as
 
 | Pin | Purpose / Label | Cable Color 
 |:--:|:-----|:-----|
-| 3 | Receive / UART RXD  | Green |
-| 4 | Transmit / UART TXD | White |
-| 7 | Ground / GND        | Black |
+| 3 | Receive / UART RXD  | Green (TX) |
+| 4 | Transmit / UART TXD | White (RX) |
+| 7 | Ground / GND        | Black (Gnd) |
 
 UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)  
 UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)  
 GND (Pin 7) - Ground (Black Wire (GND) -> GND)  
 https://www.jetsonhacks.com/2019/04/19/jetson-nano-serial-console/
 
-Connect the USB Serial cable to the following pins on GPIO (The same connector as the Force Recovery)
+Connect the USB Serial cable to the following pins on J41 (GPIO - the connector beside the SOC)
 
 | Pin | Purpose / Label | Cable Color 
 |:--:|:-----|:-----|
-| 6 | Ground / GND         | Black |
-| 8 | Receive / UART1_TX   | White |
-| 10 | Transmit / UART1_RX | Green |
+| 6 | Ground / GND          | Black      |
+| 8 | Receive / UART_2_TX   | White (RX) |
+| 10 | Transmit / UART_2_RX | Green (TX) |
 
 https://www.jetsonhacks.com/nvidia-jetson-xavier-nx-gpio-header-pinout/
 
