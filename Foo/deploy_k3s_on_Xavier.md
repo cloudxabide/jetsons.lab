@@ -109,6 +109,7 @@ Device 0: "Xavier"
 
 deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 10.2, CUDA Runtime Version = 10.2, NumDevs = 1
 Result = PASS
+```
 
 ### DeviceQuery (Kube)
 ```
