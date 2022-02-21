@@ -1,14 +1,17 @@
-# Deploy k3s on Xavier
+# Deploy k3s on NVIDIA Jetson Xavier NX and Nano
 
-## Docker on the Xavier
+## Docker on the Xavier and 
 
 Install k3s using https://www.suse.com/c/ai-at-the-edge-with-k3s-nvidia-jetson-nano-object-detection-real-time-video-analytics-src/
 
 ```
 sudo apt update sudo apt upgrade -y sudo apt install curl
-case `lshw | awk -F\: '{ print $2 }' | grep "NVIDIA Jetson` in
+case `sudo lshw | awk -F\: '{ print $2 }' | grep "NVIDIA Jetson` in
   "NVIDIA Jetson Xavier NX Developer Kit")
     sudo nvpmodel -m 8
+  ;;
+  "NVIDIA Jetson Nano Developer Kit")
+    sudo nvpmodel -m 0
   ;;
   *)
     echo "Yup"
@@ -16,9 +19,16 @@ case `lshw | awk -F\: '{ print $2 }' | grep "NVIDIA Jetson` in
 esac
 
 sudo su -
+# Control-Plane (master)
 curl -sfL https://get.k3s.io/ | INSTALL_K3S_EXEC="--docker" sh -s –
 
-# I tested this is necessary.  Docker CUDA works, but k3s did not (without this update)
+# Worker (need to get token from master:/var/lib/rancher/k3s/server/node-token
+export K3S_URL=https://xavier.jetsons.lab:6443 
+export K3S_TOKEN="K10c457b09251714ecdbb9dd74fe275a327db85fb22b5153c212e6bfa861933ca49::server:1c160339f0ed3349c35e97391a95f0ff"
+curl -sfL https://get.k3s.io/ | INSTALL_K3S_EXEC="--docker" sh -s –
+
+# I tested whether this is necessary.  SPOLIER:  it is.
+#   Without this, Docker CUDA works, but k3s did not 
 cat << EOF > /etc/docker/daemon.json
 {
 	 "default-runtime": "nvidia",
@@ -138,3 +148,6 @@ KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl apply -f ./pod_deviceQuery.yaml
 kubectl logs devicequery
 kubectl delete pod devicequery
 ```
+
+```
+
