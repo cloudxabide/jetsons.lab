@@ -12,10 +12,10 @@ Connect the USB Serial cable to the following pins on J50 (The same connector as
 | 4 | Transmit / UART TXD | White |
 | 7 | Ground / GND        | Black |
 
-UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)
-UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)
-GND (Pin 7) - Ground (Black Wire (GND) -> GND)
-https://www.jetsonhacks.com/2019/04/19/jetson-nano-serial-console/
+UART RXD (Pin 3) - Receive (Green Wire (TX) -> RXD)  
+UART TXD (Pin 4) - Transmit (White Wire (RX) -> TXD)  
+GND (Pin 7) - Ground (Black Wire (GND) -> GND)  
+https://www.jetsonhacks.com/2019/04/19/jetson-nano-serial-console/  
 
 Connect the USB Serial cable to the following pins on GPIO (the connector beside the SOC)
 
@@ -25,6 +25,11 @@ Connect the USB Serial cable to the following pins on GPIO (the connector beside
 | 8 | Receive / UART1_TX   | White |
 | 10 | Transmit / UART1_RX | Green |
 
+## Minicom Settings
+115200 8N1
+Software Control: yes
+Hardware Control: no
+
 ## SeeedStudio Jetson Mate Carrier Board
 NOTE:  need to confirm this one
 
@@ -32,4 +37,8 @@ NOTE:  need to confirm this one
 |:--:|:-----|:-----|
 | 9  | Transmit / RX0 | Green |
 | 10 | Recieve / TX0  | White |
+
+When the jumper is set on pins 9/10  
+$ lsusb | grep -i nvidi
+Bus 003 Device 011: ID 0955:7e19 NVIDIA Corp. APX
 
