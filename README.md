@@ -1,13 +1,13 @@
 # jetsons.lab
-NVIDIA Jetson Lab Environment - exploring Autonomous Edge Compute 
+NVIDIA Jetson Lab Environment - exploring Autonomous Edge Compute with Middleware Queing and Processing and Dashboard Presentation.
 
 ## Overview
-I would like to deploy "Kubernetes" of some sort on small form factor devices.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
+I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
 
 Starting with the "Data Center" and moving towards the Edge:
 * Data Center
   * Red Hat OpenShift Cluster 
-* "Edge" (simulated)
+* "Edge" (simulated) (AKA "Far Edge" or "Near Edge")
   * Red Hat SingleNode OpenShift on Intel NUC
   * NVIDIA Jetson Xavier NX
 * Device Edge
