@@ -1,29 +1,45 @@
 # jetsons.lab
-NVidia Jetson Lab Environment - exploring Microshift (or k3s/k8s) on ARM
+NVIDIA Jetson Lab Environment - exploring Autonomous Edge Compute with FOG
 
-## Goal
-I would like to deploy "Kubernetes" of some sort on small form factor devices.
+## Overview
+I would like to deploy "Kubernetes" of some sort on small form factor devices.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
 
-* [Microshift](https://microshift.io)  
-* 
+Starting with the "Data Center" and moving towards the Edge:
+* Data Center
+  * OpenShift Cluster 
+* "Edge" (simulated)
+  * SingleNode OpenShift on Intel NUC
+  * NVIDIA Jetson Xavier NX
+* Device Edge
+  * NVIDIA Jetson / Waveshare Jetbot
 
-To deploy a Microshift cluster on 4 x NVIDIA Jetson Nano.  
-I am creating this repo in an opinionated way, demonstrating what *I* was trying to accomplish.  Substitutions are likely possible, and probably would not require modifications of my approach.
 
-NOTE:  I am LITERALLY starting at ZERO here (Spring 2021).  I have a project at work focusing on something similar, and I wanted to get some rudimentary exposure to k3s and this seemed like the best and most fun way to achieve that goal.  Side benefit, I'll have some really cool hardware to play with AI later.
+The following images should help visualize what we are trying to accomplish:
 
-## Get after it...
-There's little (no) point in my explaining how to make your Jetson bootable, as it's all right at the following:  
+![Edge Computing Tiers and Red Hat](images/Edge_Computing_Tiers_and_Red_Hat.png)  
+![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
+
+### But what will it do?
+This time starting at the Edge and moving towards the Data Center:
+
+At the Device Edge, the Waveshare Jetbot is a customized ROM based on NVIDIA Jetpack 4.6 - it is a small form factor AI/ML platform which will be using the [Jetbot Collision Avoidance](https://jetbot.org/master/examples/collision_avoidance.html) Notebook which will have been trained in my "lab".  The Jetbot will be fully autonomous once trained and will (should?) continue doing it's thing until the battery dies.  It's thing = driving around in an area, avoiding the "walls" I create on the floor.  The training will be accomplished by grabbing situational images where the Jetbot is either "blocked" or "free" and loading them in to separate directories.  Those images will be transfered to the NVIDIA Jetson Xavier NX for Machine Learning Processing.  The output will then be loaded on the Jetbot to make it (hopefully) autonomous at that point.
+
+Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute will accept feedback from the Device Edge - Jetbot regarding the environmental situations it encounters (avoidance events, etc...)  This will be accomplished by [Single Node OpenShift Cluster](https://docs.openshift.com/container-platform/4.10/installing/installing_sno/install-sno-installing-sno.html) running Kafka and using MQTT to communicate.
+
+Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
+
+## Get after it
+There's little/no point in my explaining how to make your Jetson bootable, as it's all detailed in the following overview:    
 https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
 
-NOTE:  Some NVIDIA Jetson Nano have an issue with the Mac Address appearing as "00:00:00:00:00:01".  
-Review 
-[Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
-
-How it started...
+### How it started...
 ![Cluster View - Front](images/da_cluster_front.png)
 ![Cluster View - Rear](images/da_cluster_rear.png)
 
-How it's going...  
+### How it's going...  
 ![My Gear](images/gear_20220116.jpeg)
+![Da Jetbot](images/da_jetbot.jpeg)
+
+## References and Credits
+"Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Edge Computing Specialist Solution Architect (from: Red Hat Enterprise Linux for Edge - Technical Intro)
 
