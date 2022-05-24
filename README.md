@@ -19,7 +19,7 @@ The following images should help visualize what we are trying to accomplish:
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
-This time starting at the Edge and moving towards the Data Center:
+Starting at the Edge and moving towards the Data Center:
 
 At the Device Edge, the Waveshare Jetbot is a customized ROM based on NVIDIA Jetpack 4.6 - it is a small form factor AI/ML platform which will be using the [Jetbot Collision Avoidance](https://jetbot.org/master/examples/collision_avoidance.html) Notebook which will have been trained in my "lab".  The Jetbot will be fully autonomous once trained and will (should?) continue doing it's thing until the battery dies.  It's thing = driving around in an area, avoiding the "walls" I create on the floor.  The training will be accomplished by grabbing situational images where the Jetbot is either "blocked" or "free" and loading them in to separate directories.  Those images will be transfered to the NVIDIA Jetson Xavier NX for Machine Learning Processing.  The output will then be loaded on the Jetbot to make it (hopefully) autonomous at that point.
 
@@ -28,8 +28,8 @@ Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute w
 Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
 
 ### Data Path
-Jetbot grabs images -> push images to Xavier NX for Model Training -> push model back to Jetbot  
-Jetbot pushes event data to MQTT Rec on SNO ->  (TBC...)
+Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training -> push model back to Jetbot  
+Jetbot executes learned model -> Jetbot pushes event data to MQTT Rec on SNO ->  (TBC...)
 
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
 
@@ -46,7 +46,7 @@ https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
 ![Da Jetbot](images/da_jetbot.jpeg)
 
 ## Notes
-[Fog Computing](https://en.wikipedia.org/wiki/Fog_computing) was a consideration for this, but there is not much to differentiate my workloads for this Demo Environment.  I believe in a more "real world" implementation of something like this Fog would be much more relevant.
+[Fog Computing](https://en.wikipedia.org/wiki/Fog_computing) was a consideration for this, but there is not much to differentiate my workloads for this Demo Environment - in particular, since most of this Demo is "emulating" something else to begin with.  I believe in a more "real world" implementation of something like this Fog would be much more relevant.
 
 ## References and Credits
 Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Edge Computing Specialist Solution Architect (from: Red Hat Enterprise Linux for Edge - Technical Intro)
