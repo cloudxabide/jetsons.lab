@@ -13,11 +13,13 @@ curl -sfL https://get.k3s.io | sh -
 ```
 
 
+```
 cat << EOF > /etc/rancher/k3s/config.yaml
 node-ip: `ip addr show dev eth0 | grep inet | awk '{ print $2 }' | sed 's/\/24//g'`
 server: https://10.10.10.51:6443
 token: 1234gityourbootieonthefloor 
 EOF
+```
 
 ## References
 https://k3s.io/
