@@ -15,7 +15,10 @@ Starting with the "Data Center" and moving towards the Edge:
 
 The following images should help visualize what we are trying to accomplish:
 
+### Edge Computing Tiers
 ![Edge Computing Tiers and Red Hat](images/Edge_Computing_Tiers_and_Red_Hat.png)  
+
+### Autonomous Edge Demo Environment - Overview
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
@@ -35,7 +38,8 @@ Jetbot executes learned model -> Jetbot pushes event data to MQTT Rec on SNO -> 
 
 ## Get after it
 There's little/no point in my explaining how to make your Jetson bootable, as it's all detailed in the following overview:    
-https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro
+[NVIDIA Jetson Nano Devkit - Get Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro)  
+[NVIDIA Jetson Xavier NX Devkit - Get Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit)
 
 ### How it started...
 ![Cluster View - Front](images/da_cluster_front.png)
