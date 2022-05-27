@@ -68,3 +68,12 @@ Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Ed
 [Apache Kafka](https://kafka.apache.org/)  
 [Apache Kafka MirrorMaker](https://docs.confluent.io/4.0.0/multi-dc/mirrormaker.html)  
 [MQTT Protocol](https://en.wikipedia.org/wiki/MQTT)  
+
+### Random Bits
+I'm pretty disappointed with a few things regarding the NVIDIA ecosystem, and then AI/ML ecosystem.  It's comically known that NVIDIA has proprietary software that does not "play well with Linux"  ([Linus Torvalds "famously" telling giving NVIDIA the middle finger with associated audio - NSFW](https://www.youtube.com/watch?v=_36yNWw_07g).  Which, is kind of amusing but is seriously a pain to get stuff done.  
+AI/ML uses PyTorch and Jupyter Lab - which, again - seemingly because of the licensing, is also a pain.  I don't like downloading stuff from websites and running "install.sh" scripts.  Seriously?  Now I have to maintain the software on my own, won't know when updates occur, etc..  
+</rant>
+
+
+https://pytorch.org/get-started/locally/  
+https://github.com/rbonghi/jetson_stats
