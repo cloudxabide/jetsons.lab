@@ -25,10 +25,6 @@ Connect the USB Serial cable to the following pins on GPIO (the connector beside
 | 8 | Receive / UART1_TX   | White |
 | 10 | Transmit / UART1_RX | Green |
 
-## Minicom Settings
-115200 8N1
-Software Control: yes
-Hardware Control: no
 
 ## SeeedStudio Jetson Mate Carrier Board
 NOTE:  need to confirm this one
@@ -39,6 +35,13 @@ NOTE:  need to confirm this one
 | 10 | Recieve / TX0  | White |
 
 When the jumper is set on pins 9/10  
+```
 $ lsusb | grep -i nvidi
 Bus 003 Device 011: ID 0955:7e19 NVIDIA Corp. APX
+```
 
+Without jumper
+```
+$ lsusb | grep -i nvidi
+Bus 001 Device 007: ID 0955:7020 NVIDIA Corp. L4T (Linux for Tegra) running on Tegra
+```
