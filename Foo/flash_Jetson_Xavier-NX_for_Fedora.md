@@ -17,12 +17,16 @@ ln -s /usr/bin/python3 /usr/bin/python
 ```
 
 ```
-mkdir -p ~/Downloads/Nvidia_Jetson/Xavier_NX; cd $_
+mkdir -p ~/Downloads/NVIDIA_Jetson/Xavier_NX; cd $_
 ```
 
 ### Download Linux for Tegra (L4T) R32.6.1 release:
 ```
-wget "https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/jetson_linux_r32.6.1_aarch64.tbz2"
+#wget "https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t186/jetson_linux_r32.6.1_aarch64.tbz2"
+```
+### Download Linux for Tegra (L4T) R32.7.1 release:
+```
+wget "https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/t210/jetson-210_linux_r32.7.1_aarch64.tbz2"
 ```
 
 ### Download UEFI firmware (1.1.2 ATM) (Readme):

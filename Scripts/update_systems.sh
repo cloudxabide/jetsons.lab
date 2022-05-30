@@ -1,14 +1,18 @@
-!/bin/bash
-
+#!/bin/bash
+# Some tweaks all stored in one place - they do not apply universally though.
 
 pre() {
 sudo -i
-
 }
 
 [ `id -u` -ne 0 ] && { echo "ERROR: you should run this as root yo"; exit 9; }
 
-echo "mansible ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/mansible-nopasswd-all
+SUDOERS="mansible nvidia jetbot"
+for USER in $SUDOERS
+do 
+  echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER-nopasswd-all
+done
+
 
 # Setup the "mansible" user
 id -u mansible &>/dev/null || useradd -Gsudo -u1001 -c "My Ansible" -d /home/mansible -s /bin/bash -p '$6$MIxbq9WNh2oCmaqT$10PxCiJVStBELFM.AKTV3RqRUmqGryrpIStH5wl6YNpAtaQw.Nc/lkk0FT9RdnKlEJEuB81af6GWoBnPFKqIh.' mansible
@@ -49,6 +53,8 @@ cat << EOF >> /etc/hosts
 10.10.10.52 judy.jetsons.lab
 10.10.10.53 jane.jetsons.lab
 10.10.10.54 george.jetsons.lab
+10.10.10.55 xavier.jetsons.lab
+10.10.10.55 jetbot.jetsons.lab
 EOF
 
 # System Tuning 

@@ -3,9 +3,18 @@
 ## Purpose
 Random tidbits that I need to remember
 
+## Minicom Settings
+115200 8N1  
+Software Control: yes  
+Hardware Control: no  
+
 ### Control Fan Speed
+Jetson Nano
 ```
 echo 128 > /sys/devices/pwm-fan/target_pwm             
+```
+Jetson Xavier
+```
 ```
 
 ### Configure WLAN
@@ -20,8 +29,4 @@ NOTE:  Some NVIDIA Jetson Nano have an issue with the Mac Address appearing as "
 Review
 [Firmware Update Overview](Foo/Firmware_Update-NVIDIA_Jetson_Nano.md)
 
-## Minicom Settings
-115200 8N1  
-Software Control: yes  
-Hardware Control: no  
 

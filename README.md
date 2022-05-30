@@ -36,6 +36,20 @@ Jetbot executes learned model -> Jetbot pushes event data to MQTT Rec on SNO -> 
 
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
 
+## Demo
+Status:  In Progress
+
+* Deploy OpenShift (on vSphere)  
+* Deploy/configure NVIDIA Jetson Xavier NX (with post-install to run Jetbot training models)  
+* Deploy/configure NVIDIA Jetson Jetbot image
+* Gather 3 sets of images from Jetbot
+  * dataset16 - 16" from "wall" as blocked  (estimate 20 images total)
+  * dataset8 - 8" from "wall" as blocked  (estimate 30 images total)
+  * dataset4 - 4" from "wall" as blocked  (estimate 50 images total)
+  * NOTE: the dataset "in-use" will always be named dataset.zip
+
+Once the entire ecosystem is built and functional, the demo will start with the Jetbot ingesting the model from dataset16 and demonstrate how it responds to "danger" when 16" away.
+
 ## Get after it
 There's little/no point in my explaining how to make your Jetson bootable, as it's all detailed in the following overview:    
 [NVIDIA Jetson Nano Devkit - Get Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro)  
