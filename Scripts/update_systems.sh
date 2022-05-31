@@ -54,7 +54,7 @@ cat << EOF >> /etc/hosts
 10.10.10.53 jane.jetsons.lab
 10.10.10.54 george.jetsons.lab
 10.10.10.55 xavier.jetsons.lab
-10.10.10.55 jetbot.jetsons.lab
+10.10.10.56 jetbot.jetsons.lab
 EOF
 
 # System Tuning 
