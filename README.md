@@ -13,7 +13,8 @@ Starting with the "Data Center" and moving towards the Edge:
 * Device Edge
   * NVIDIA Jetson / Waveshare Jetbot
 
-# NOTE: I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
+# NOTE:  
+I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
 
 The following images should help visualize what we are trying to accomplish:
 
