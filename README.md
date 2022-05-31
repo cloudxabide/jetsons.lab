@@ -1,5 +1,5 @@
 # jetsons.lab
-NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation in the Data Center.
+NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
 ## Overview
 I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
