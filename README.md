@@ -9,6 +9,7 @@ Starting with the "Data Center" and moving towards the Edge:
   * Red Hat OpenShift Cluster 
 * "Edge" (simulated) (AKA "Far Edge" or "Near Edge")
   * Red Hat SingleNode OpenShift on Intel NUC
+  * MicroShift (based on Red Hat OpenShift) on Intel NUC
   * NVIDIA Jetson Xavier NX
 * Device Edge
   * NVIDIA Jetson / Waveshare Jetbot
@@ -79,6 +80,7 @@ Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Ed
   
 [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)  
 [Red Hat OpenShift - Single Node OpenShift](https://docs.openshift.com/container-platform/4.10/installing/installing_sno/install-sno-preparing-to-install-sno.html)  
+[MicroShift](https://microshift.io/)  
 [Red Hat AMQ](https://www.redhat.com/en/technologies/jboss-middleware/amq)  
 [Apache Camel-K (Camel Kafka)](https://camel.apache.org/camel-k/1.9.x/index.html)  
 [Apache Kafka](https://kafka.apache.org/)  
