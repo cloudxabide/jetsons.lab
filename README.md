@@ -1,6 +1,10 @@
 # jetsons.lab
 NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
+## The Problem
+Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and get away from proprietary and slow-changing software stacks, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
+Our first challenge: deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated frequently, with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.
+
 ## Overview
 I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
 
@@ -19,9 +23,7 @@ I have not found a definitive guide regarding "edge nomenclature" and where in t
 
 The following images should help visualize what we are trying to accomplish:
 
-### Edge Computing Tiers
-
-### Autonomous Edge Demo Environment - Overview
+### Autonomous Edge Demo Environment - Hardware Overview (showing Compute Tiers)
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
@@ -33,7 +35,7 @@ Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute w
 
 Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
 
-### Data Path
+### Data Flow 
 Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training -> push model back to Jetbot  
 Jetbot executes learned model -> Jetbot pushes event data to MQTT Rec on SNO ->  (TBC...)
 
