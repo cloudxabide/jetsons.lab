@@ -2,9 +2,11 @@
 NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
 ## The Problem
+We need an app deployed at the Edge.  
+
 Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
 
-A significant/looming challenge: deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated frequently, with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
+A significant/looming challenge: to deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated (and somewhat frequently), with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
 
 ## Overview
 I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
@@ -20,20 +22,23 @@ Starting with the "Data Center" and moving towards the Edge:
   * NVIDIA Jetson / Waveshare Jetbot
 
 This solution will provide DevSecGitOps: (reword this <<< )
-* Source Control Management (SCM)
-* Code Scanning
-* Pipeline Management
-* Container Orchestration
-* Artifact/Package management
-  * Container Registry
-  * Package Repository
-* Container Scanning
-* Container Hosting
-* Code Testing
-* Chat Integration
-* Automation
-  * Image Building
+| Function                           | Product (proposed)
+|:-----------------------------------|:-----------------------------------|
+| Source Control Management (SCM)    | [GitHub](https://github.com/)      | 
+| Container Registry                 | [Red Hat Quay](https://access.redhat.com/products/red-hat-quay) | 
+| Binary/Package Repository          | [Nexus](https://www.sonatype.com/products/nexus-repository)
+| Container Hosting                  | [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) | 
+| Platform Scanning                  | [Red Hat OpenShift - Compliance Operator](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/security_and_compliance/compliance-operator) | 
+| Container Scanning                 | [Red Hat Advanced Cluster Security](https://www.redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)
+| Container Orchestration            | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)<BR>Red Hat OpenShift GitOps | 
+| Pipeline Automation                | [Tekton](https://tekton.dev/) <BR>Red Hat OpenShift Pipline | 
+| Code Scanning                      | tbd - Sonarqube? | 
+| Code Testing                       | tbd - Selinium? | 
+| Chat Integration                   | tbd - Slack though | 
+| Automation - Edge Image Building   | tbd | 
 
+### Considerations:
+Tekton vs Jenkins
 
 ### NOTE:  
 I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
