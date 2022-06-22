@@ -21,7 +21,8 @@ Starting with the "Data Center" and moving towards the Edge:
 * Device Edge
   * NVIDIA Jetson / Waveshare Jetbot
 
-### NOTE:  
+**NOTE:** 
+
 I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
 
 This solution will provide DevSecGitOps: (reword this <<< )
@@ -41,11 +42,10 @@ This solution will provide DevSecGitOps: (reword this <<< )
 | Automation - Edge Image Building   | tbd | 
 
 ### Considerations:
-Tekton vs Jenkins
+Need to find products to fill the empty spots (above)
 
 ## Executive Summary
-We will be creating Infrastructure to accommodate a secure software pipeline from the time a developer commits code in to a Repo to when it's running on an Edge or Far Edge device.
-
+We will be creating Infrastructure to accommodate a secure software pipeline from the time a developer commits code in to a Repo to when it's running on an Edge or Far Edge device.  Additionally, we will introduce rigor and testing in to the SDLC.
 
 The following images should help visualize what we are trying to accomplish:
 
@@ -62,7 +62,7 @@ Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute w
 Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
 
 ### Data Flow 
-#tbd# I should align these steps with the numeric representation in the image (below)
+**tbd** I should align these steps with the numeric representation in the image (below)
 
 1. Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
 1a. push model back to Jetbot  
