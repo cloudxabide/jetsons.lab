@@ -40,6 +40,7 @@ This solution will provide DevSecGitOps: (reword this <<< )
 | Code Testing                       | tbd - Selinium? | 
 | Chat Integration                   | tbd - Slack though | 
 | Automation - Edge Image Building   | tbd | 
+| Cluster Management                 | [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) |
 
 ### Considerations:
 Need to find products to fill the empty spots (above)
@@ -49,7 +50,7 @@ We will be creating Infrastructure to accommodate a secure software pipeline fro
 
 The following images should help visualize what we are trying to accomplish:
 
-### Autonomous Edge Demo Environment - Hardware Overview (showing Edge Compute Tiers)
+### Autonomous Edge Environment 
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
@@ -62,6 +63,7 @@ Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute w
 Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
 
 ### Data Flow 
+![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
 **tbd** I should align these steps with the numeric representation in the image (below)
 
 1. Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
@@ -70,18 +72,31 @@ Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/
 2. Jetbot pushes event data to MQTT Rec on SNO  
 3. AMQ processes queue and... ->  (TBC...)
 
-![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
-
 ## Demo
 Status:  In Progress
 
-* Deploy OpenShift (on vSphere)  
+* Deploy vSphere 
+* Deploy supporing infrastructure services
+  * DNS
+  * IDM
+  * PXE, WWW, TFTP, DHCP
+  * Network Attached Storage
+* Deploy OpenShift (on vSphere Cluster)  
+  * OpenShift
+  * OpenShift Data Foundations
+  * Quay / Clair
+  * Red Hat Advanced Cluster Management
+  * Red Hat Advanced Cluster Security
+* Deploy CI/CD services
+  * Red Hat OpenShift Pipeline
+  * Red Hat OpenShift GitOps
+* Deploy Single Node OpenShift 
 * Deploy/configure NVIDIA Jetson Xavier NX (with post-install to run Jetbot training models)  
 * Deploy/configure NVIDIA Jetson Jetbot image
 * Gather different sets of images from Jetbot
   * dataset16 - 16" from "wall" as blocked  (estimate 20 images total)
   * dataset4 - 4" from "wall" as blocked  (estimate 50 images total)
-  * NOTE: the dataset "in-use" will always be named dataset.zip
+  * NOTE: the dataset that will be utilized by Notebook will always be named dataset.zip 
 
 Once the entire ecosystem is built and functional, the demo will start with the Jetbot ingesting the model from dataset16 and demonstrate how it responds to "danger" when 16" away.
 
