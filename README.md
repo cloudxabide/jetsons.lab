@@ -2,8 +2,9 @@
 NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
 ## The Problem
-Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and get away from proprietary and slow-changing software stacks, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
-Our first challenge: deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated frequently, with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.
+Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
+
+A significant/looming challenge: deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated frequently, with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
 
 ## Overview
 I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
@@ -18,12 +19,28 @@ Starting with the "Data Center" and moving towards the Edge:
 * Device Edge
   * NVIDIA Jetson / Waveshare Jetbot
 
-# NOTE:  
+This solution will provide DevSecGitOps: (reword this <<< )
+* Source Control Management (SCM)
+* Code Scanning
+* Pipeline Management
+* Container Orchestration
+* Artifact/Package management
+  * Container Registry
+  * Package Repository
+* Container Scanning
+* Container Hosting
+* Code Testing
+* Chat Integration
+* Automation
+  * Image Building
+
+
+### NOTE:  
 I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
 
 The following images should help visualize what we are trying to accomplish:
 
-### Autonomous Edge Demo Environment - Hardware Overview (showing Compute Tiers)
+### Autonomous Edge Demo Environment - Hardware Overview (showing Edge Compute Tiers)
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
@@ -47,9 +64,8 @@ Status:  In Progress
 * Deploy OpenShift (on vSphere)  
 * Deploy/configure NVIDIA Jetson Xavier NX (with post-install to run Jetbot training models)  
 * Deploy/configure NVIDIA Jetson Jetbot image
-* Gather 3 sets of images from Jetbot
+* Gather different sets of images from Jetbot
   * dataset16 - 16" from "wall" as blocked  (estimate 20 images total)
-  * dataset8 - 8" from "wall" as blocked  (estimate 30 images total)
   * dataset4 - 4" from "wall" as blocked  (estimate 50 images total)
   * NOTE: the dataset "in-use" will always be named dataset.zip
 
@@ -91,10 +107,10 @@ Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Ed
 
 ### Random Bits
 
-I have found that the NVIDIA ecosystem, and then AI/ML ecosystem make things more difficult to get stuff done outside their specific/proprietary way of doing things.  
-AI/ML uses PyTorch and Jupyter Lab - which, again - seemingly because of the licensing, is also a pain.  I don't like downloading stuff from websites and running "install.sh" scripts.  Seriously?  Now I have to maintain the software on my own, won't know when updates occur, etc..  
+<rant>
+I have found that the NVIDIA ecosystem, and then AI/ML ecosystem make things more difficult to get stuff done outside their specific/proprietary way of doing things.  (I.e. you can't simply decide you're going to run Fedora on the Jetbot.  Or if you install RHEL on the Jetson, you may not be able to take advantage of the GPU, or.. not easily, anyhow). 
 </rant>
 
 
 https://pytorch.org/get-started/locally/  
-https://github.com/rbonghi/jetson_stats
+[Jetson Stats](https://github.com/rbonghi/jetson_stats)
