@@ -64,11 +64,11 @@ Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/
 ### Data Flow 
 #tbd# I should align these steps with the numeric representation in the image (below)
 
-1 Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training 
-1a push model back to Jetbot  
-1b Jetbot executes learned model 
-2 Jetbot pushes event data to MQTT Rec on SNO 
-3 AMQ ->  (TBC...)
+1. Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
+1a. push model back to Jetbot  
+1b. Jetbot executes learned model   
+2. Jetbot pushes event data to MQTT Rec on SNO  
+3. AMQ processes queue and... ->  (TBC...)
 
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
 
