@@ -55,4 +55,10 @@ sudo nvpmodel -m1
 sudo docker pull nvcr.io/nvidia/l4t-ml:r34.1.0-py3
 #sudo docker run -it --rm --runtime nvidia --network host nvcr.io/nvidia/l4t-ml:r34.1.0-py3
 sudo docker run -it --rm --runtime nvidia --network host -v /home/nvidia/Notebooks:/Notebooks nvcr.io/nvidia/l4t-ml:r34.1.0-py3
+
+docker run -p 8888:8888 \
+           -e JUPYTER_ENABLE_LAB=yes \
+           -e JUPYTER_TOKEN=Will0w \
+           --name jupyter \
+           -d jupyter/datascience-notebook:latest
 ```

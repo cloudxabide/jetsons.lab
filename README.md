@@ -1,7 +1,7 @@
 # jetsons.lab
 NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
-## The Problem
+## The Challenge 
 We need an app deployed at the Edge.  
 
 Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
@@ -26,6 +26,7 @@ Starting with the "Data Center" and moving towards the Edge:
 I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
 
 This solution will provide DevSecGitOps: (reword this <<< )
+
 | Function                           | Product (proposed)
 |:-----------------------------------|:-----------------------------------|
 | Source Control Management (SCM)    | [GitHub](https://github.com/)      | 
