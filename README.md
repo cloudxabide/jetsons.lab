@@ -73,6 +73,11 @@ Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/
 2. Jetbot pushes event data to MQTT Rec on SNO  
 3. AMQ processes queue and... ->  (TBC...)
 
+NVIDIA created an environment to process APS data - and I am (sort of) attempting to mimic that.   
+![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
+Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
+
+
 ## Demo
 Status:  In Progress
 
