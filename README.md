@@ -67,7 +67,7 @@ Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
 **tbd** I should align these steps with the numeric representation in the image (below)
 
-1. Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
+1. Jetbot captures and stores images (separated in to a directory labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
 1a. push model back to Jetbot  
 1b. Jetbot executes learned model   
 2. Jetbot pushes event data to MQTT Rec on SNO  
@@ -76,7 +76,6 @@ Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/
 NVIDIA created an environment to process APS data - and I am (sort of) attempting to mimic that.   
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
 Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
-
 
 ## Demo
 Status:  In Progress
