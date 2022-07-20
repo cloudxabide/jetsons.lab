@@ -1,25 +1,37 @@
 # jetsons.lab
+
+## Overview
+First/foremost this lab is an entirely fictitous use-case and scenario.  It is "Data Science" project with an emphasis on Data Engineering.
+
 NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
 
-## The Challenge 
-We need an app deployed at the Edge.  
+STATUS:  This is very much still a work in progress and subject to change... lots of change.
 
-Our manufacturing floor has many "manual" or "human-driven" aspects.  We need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commododity of the shelf (COTS) hardware and Open Source Software (OSS).  
+## The Challenge 
+There is a need to have an app deployed at "the edge" to run our autonomous devices.  
+
+The manufacturing floor has many "manual" or "human-driven" aspects.  There is need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commodity off the shelf (COTS) hardware and Open Source Software (OSS).  
 
 A significant/looming challenge: to deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated (and somewhat frequently), with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
 
-## Overview
-I would like to deploy "Kubernetes" of some sort on small form factor devices representative of what a Manufacturer might do.  Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.  
+## Technical Objective 
+Deploy "Kubernetes" of some sort on small form factor devices to accommodate a typical manufacturing environment.  (Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.)
 
-Starting with the "Data Center" and moving towards the Edge:
+Starting with "the cloud", to the "Data Center" and moving towards the Edge:
+* Cloud (public)
+  * Red Hat OpenShift Service on AWS (ROSA) 
+  * Cloud-native services
+    * S3 object storage
+    * Lambda 
 * Data Center
-  * Red Hat OpenShift Cluster 
+  * 3-node Intel - VMware Cluster
+    * Red Hat OpenShift 
+  * 1-node Intel - freeNAS 
 * "Edge" (simulated) (AKA "Far Edge" or "Near Edge")
-  * Red Hat SingleNode OpenShift on Intel NUC
-  * MicroShift (based on Red Hat OpenShift) on Intel NUC
-  * NVIDIA Jetson Xavier NX
+  * Intel NUC - Red Hat Enterprise Linux running Podman, managed by Ansible
+  * NVIDIA Jetson Xavier NX - Linux for Tegra (L4T)
 * Device Edge
-  * NVIDIA Jetson / Waveshare Jetbot
+  * NVIDIA Jetson - Waveshare Jetbot Software
 
 **NOTE:** 
 
@@ -55,13 +67,15 @@ The following images should help visualize what we are trying to accomplish:
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
-Starting at the Edge and moving towards the Data Center:
+Starting at the Device Edge, to the Edge, to the Data Center, to the cloud:
 
 At the Device Edge, the Waveshare Jetbot is a customized ROM based on NVIDIA Jetpack 4.6 - it is a small form factor AI/ML platform which will be using the [Jetbot Collision Avoidance](https://jetbot.org/master/examples/collision_avoidance.html) Notebook which will have been trained in my "lab".  The Jetbot will be fully autonomous once trained and will (should?) continue doing it's thing until the battery dies.  It's thing = driving around in an area, avoiding the "walls" I create on the floor.  The training will be accomplished by grabbing situational images where the Jetbot is either "blocked" or "free" and loading them in to separate directories.  Those images will be transfered to the NVIDIA Jetson Xavier NX for Machine Learning Processing.  The output will then be loaded on the Jetbot to make it (hopefully) autonomous at that point.
 
-Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute will accept feedback from the Device Edge - Jetbot regarding the environmental situations it encounters (avoidance events, etc...)  This will be accomplished by [Single Node OpenShift Cluster](https://docs.openshift.com/container-platform/4.10/installing/installing_sno/install-sno-installing-sno.html) running [Red Hat AMQ](https://www.redhat.com/en/technologies/jboss-middleware/amq) and [Apache Kafka](https://kafka.apache.org/) using [MQTT protocol](https://en.wikipedia.org/wiki/MQTT) to communicate.
+Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute will accept feedback from the Device Edge - Jetbot regarding the environmental situations it encounters (avoidance events, etc...)  This will be accomplished by an Intel NUC running RHEL 8 with Podman.  This host will be running [Red Hat AMQ](https://www.redhat.com/en/technologies/jboss-middleware/amq) and [Apache Kafka](https://kafka.apache.org/) using [MQTT protocol](https://en.wikipedia.org/wiki/MQTT) to communicate.
 
-Lastly, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
+Next, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
+
+All of this data will then be sent to a "private AWS instance" for processing.  Once the analysis has been done, the resulting data will then be forwarded to another AWS account which is responsible for presentation of the data.
 
 ### Data Flow 
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
