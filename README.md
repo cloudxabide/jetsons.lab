@@ -66,7 +66,7 @@ The following images should help visualize what we are trying to accomplish:
 ![MatrixLab - Autonoumous Edge Demo Environment](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment.png)
 
 ### But what will it do?
-Starting at the Device Edge, to the Edge, to the Data Center, to the cloud:
+The following will provide an overview of the funcationality, starting at the Device Edge, to the Edge, to the Data Center, to the Cloud:
 
 At the Device Edge, the Waveshare Jetbot is a customized ROM based on NVIDIA Jetpack 4.6 - it is a small form factor AI/ML platform which will be using the [Jetbot Collision Avoidance](https://jetbot.org/master/examples/collision_avoidance.html) Notebook which will have been trained in my "lab".  The Jetbot will be fully autonomous once trained and will (should?) continue doing it's thing until the battery dies.  It's thing = driving around in an area, avoiding the "walls" I create on the floor.  The training will be accomplished by grabbing situational images where the Jetbot is either "blocked" or "free" and loading them in to separate directories.  Those images will be transfered to the NVIDIA Jetson Xavier NX for Machine Learning Processing.  The output will then be loaded on the Jetbot to make it (hopefully) autonomous at that point.
 
@@ -90,7 +90,7 @@ NVIDIA created an environment to process APS data - and I am (sort of) attemptin
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
 Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
 
-## Demo
+## Demo - Build Environment
 Status:  In Progress
 
 * Deploy vSphere 
@@ -118,18 +118,12 @@ Status:  In Progress
 
 Once the entire ecosystem is built and functional, the demo will start with the Jetbot ingesting the model from dataset16 and demonstrate how it responds to "danger" when 16" away.
 
+## Demo - Showcase operations
+
 ## Get after it
 There's little/no point in my explaining how to make your Jetson bootable, as it's all detailed in the following overview:    
 [NVIDIA Jetson Nano Devkit - Get Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro)  
 [NVIDIA Jetson Xavier NX Devkit - Get Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit)
-
-### How it started...
-![Cluster View - Front](images/da_cluster_front.png)
-![Cluster View - Rear](images/da_cluster_rear.png)
-
-### How it's going...  
-![My Gear](images/gear_20220116.jpeg)
-![Da Jetbot](images/da_jetbot.jpeg)
 
 ## Notes
 [Fog Computing](https://en.wikipedia.org/wiki/Fog_computing) was a consideration for this, but there is not much to differentiate my workloads for this Demo Environment - in particular, since most of this Demo is "emulating" something else to begin with.  I believe in a more "real world" implementation of something like this Fog would be much more relevant.
