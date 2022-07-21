@@ -1,21 +1,23 @@
 # jetsons.lab
 
+NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge Middleware queing and processing, and downstream dashboard presentation with additional processing in the Data Center.  At a later phase (Q4 2022) public cloud (AWS) will be added for additional analytics and machine learning, reporting, executivte dashboards, etc..
+
 ## Overview
-First/foremost this lab is an entirely fictitous use-case and scenario.  It is "Data Science" project with an emphasis on Data Engineering.
+First/foremost this lab is an entirely fictitous use-case and scenario.  It is a "Data Science" project with an emphasis on Data Engineering, that will integrate MLOps.
 
-NVIDIA Jetson Lab Environment - exploring Device Edge Autonomous Compute with Edge Middleware Queing and Processing, and downstream Dashboard Presentation with additional processing in the Data Center.
-
-STATUS:  This is very much still a work in progress and subject to change... lots of change.
+## Status  
+| Timeline | Status Overview |
+|:---------|:----------------|
+| Q3-2022  | This is very much still a work in progress |
+| Q2-2022  | Initial Draft <BR> Researching hardware platforms and compute options |
 
 ## The Challenge 
-There is a need to have an app deployed at "the edge" to run our autonomous devices.  
+Short version: a manufacturer needs to have an app deployed at "the edge" to run autonomous devices.  
 
-The manufacturing floor has many "manual" or "human-driven" aspects.  There is need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commodity off the shelf (COTS) hardware and Open Source Software (OSS).  
-
-A significant/looming challenge: to deploy an autonomous device to our manufacturing floor.  This device needs to be self-sustained and have the ability to be updated (and somewhat frequently), with minimal interruption.  We also need to modernize our Software Development Life Cycle (SDLC), using a secure pipeline.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
+The manufacturing floor has many "manual" or "human-driven" aspects, even when autonomous systems are involved.  There is need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commodity off the shelf (COTS) hardware and Open Source Software (OSS) and modern Software Development Methodologies.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
 
 ## Technical Objective 
-Deploy "Kubernetes" of some sort on small form factor devices to accommodate a typical manufacturing environment.  (Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.)
+Deploy a ["Container-based workload"](https://cloud.google.com/learn/what-are-containers) of some sort on small form factor devices to resemble a typical manufacturing environment.  (Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.)
 
 Starting with "the cloud", to the "Data Center" and moving towards the Edge:
 * Cloud (public)
@@ -33,10 +35,7 @@ Starting with "the cloud", to the "Data Center" and moving towards the Edge:
 * Device Edge
   * NVIDIA Jetson - Waveshare Jetbot Software
 
-**NOTE:** 
-
-I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
-
+### Functions/Tools/Services
 This solution will provide DevSecGitOps: (reword this <<< )
 
 | Function                           | Product (proposed)
@@ -91,7 +90,6 @@ NVIDIA created an environment to process APS data - and I am (sort of) attemptin
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
 Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
 
-
 ## Demo
 Status:  In Progress
 
@@ -136,6 +134,8 @@ There's little/no point in my explaining how to make your Jetson bootable, as it
 ## Notes
 [Fog Computing](https://en.wikipedia.org/wiki/Fog_computing) was a consideration for this, but there is not much to differentiate my workloads for this Demo Environment - in particular, since most of this Demo is "emulating" something else to begin with.  I believe in a more "real world" implementation of something like this Fog would be much more relevant.
 
+I have not found a definitive guide regarding "edge nomenclature" and where in the spectrum devices exist.  As such, I am using the definitions my coworkers have adopted currently (2022 Spring).  While I don't think it is important to actually know the definitions, it does help explain my Demo Environment.
+
 ## References and Credits
 Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Edge Computing Specialist Solution Architect (from: Red Hat Enterprise Linux for Edge - Technical Intro)
 
@@ -147,19 +147,9 @@ Image (above) "Edge Computing Tiers and Red Hat" -- Luis Arizmendi, Principal Ed
   
 [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)  
 [Red Hat OpenShift - Single Node OpenShift](https://docs.openshift.com/container-platform/4.10/installing/installing_sno/install-sno-preparing-to-install-sno.html)  
-[MicroShift](https://microshift.io/)  
 [Red Hat AMQ](https://www.redhat.com/en/technologies/jboss-middleware/amq)  
 [Apache Camel-K (Camel Kafka)](https://camel.apache.org/camel-k/1.9.x/index.html)  
 [Apache Kafka](https://kafka.apache.org/)  
 [Apache Kafka MirrorMaker](https://docs.confluent.io/4.0.0/multi-dc/mirrormaker.html)  
 [MQTT Protocol](https://en.wikipedia.org/wiki/MQTT)  
 
-### Random Bits
-
-<rant>
-I have found that the NVIDIA ecosystem, and then AI/ML ecosystem make things more difficult to get stuff done outside their specific/proprietary way of doing things.  (I.e. you can't simply decide you're going to run Fedora on the Jetbot.  Or if you install RHEL on the Jetson, you may not be able to take advantage of the GPU, or.. not easily, anyhow). 
-</rant>
-
-
-https://pytorch.org/get-started/locally/  
-[Jetson Stats](https://github.com/rbonghi/jetson_stats)
