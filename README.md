@@ -38,24 +38,28 @@ Starting with "the cloud", to the "Data Center" and moving towards the Edge:
 ### Functions/Tools/Services
 This solution will provide DevSecGitOps: (reword this <<< )
 
-| Function                           | Product (proposed)
-|:-----------------------------------|:-----------------------------------|
-| Source Control Management (SCM)    | [GitHub](https://github.com/)      | 
-| Container Registry                 | [Red Hat Quay](https://access.redhat.com/products/red-hat-quay) | 
-| Binary/Package Repository          | [Nexus](https://www.sonatype.com/products/nexus-repository)
-| Container Hosting                  | [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) | 
-| Platform Scanning                  | [Red Hat OpenShift - Compliance Operator](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/security_and_compliance/compliance-operator) | 
-| Container Scanning                 | [Red Hat Advanced Cluster Security](https://www.redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)
-| Container Orchestration            | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)<BR>Red Hat OpenShift GitOps | 
-| Pipeline Automation                | [Tekton](https://tekton.dev/) <BR>Red Hat OpenShift Pipline | 
-| Code Scanning                      | tbd - Sonarqube? | 
-| Code Testing                       | tbd - Selinium? | 
-| Chat Integration                   | tbd - Slack though | 
-| Automation - Edge Image Building   | tbd | 
-| Cluster Management                 | [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) |
+| Function                             | Product (proposed)
+|:-------------------------------------|:-----------------------------------|
+| Source Control Management (SCM)      | [GitHub](https://github.com/)      | 
+| Container Registry                   | [Red Hat Quay](https://access.redhat.com/products/red-hat-quay) | 
+| Binary/Package Repository            | [Nexus](https://www.sonatype.com/products/nexus-repository)
+| Container Hosting                    | [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) | 
+| Platform Scanning                    | [Red Hat OpenShift - Compliance Operator](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/security_and_compliance/compliance-operator) | 
+| Container Scanning                   | [Red Hat Advanced Cluster Security](https://www.redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)
+| Container Orchestration              | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) <BR> (Red Hat OpenShift GitOps) | 
+| Pipeline Automation                  | [Tekton](https://tekton.dev/) <BR> (Red Hat OpenShift Pipline) | 
+| Code Scanning (static code analysis) | [Sonarqube](https://www.sonarqube.org/) | 
+| Code Testing                         | [Selinium](https://www.selenium.dev/) | 
+| Chat Integration                     | [Slack](https://slack.com/) | 
+| Automation - Edge Image Building     | tbd | 
+| Cluster Management (for OCP)         | [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) |
+| Managed OCP Cluster (ROSA)           | [Red Hat OpenShift Service on AWS](https://www.redhat.com/en/technologies/cloud-computing/openshift/aws) 
 
 ### Considerations:
-Need to find products to fill the empty spots (above)
+
+* Need to find products to fill the empty spots (above)
+* Determine which products work in both on-prem and cloud
+* Analyze cloud-native vs vendor-apps  
 
 ## Executive Summary
 We will be creating Infrastructure to accommodate a secure software pipeline from the time a developer commits code in to a Repo to when it's running on an Edge or Far Edge device.  Additionally, we will introduce rigor and testing in to the SDLC.
