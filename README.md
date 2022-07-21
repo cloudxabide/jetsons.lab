@@ -14,7 +14,7 @@ First/foremost this lab is an entirely fictitous use-case and scenario.  It is a
 ## The Challenge 
 Short version: a manufacturer needs to have an app deployed at "the edge" to run autonomous devices.  
 
-The manufacturing floor has many "manual" or "human-driven" aspects, even when autonomous systems are involved.  There is need/want to modernize and migrate from proprietary and slow-changing software implementation, to utilize more commodity off the shelf (COTS) hardware and Open Source Software (OSS) and modern Software Development Methodologies.  We feel that once we have worked on this issue, we will be poised to address other challenges in a simliar way.
+The manufacturing floor has many "manual" or "human-driven" aspects, even when autonomous systems are involved.  There is need/want to modernize the software stack and migrate from proprietary and slow-changing software implementation, to utilize more commodity off the shelf (COTS) hardware and Open Source Software (OSS) and modern Software Development Methodologies.  The benefits of working through this activity will be realized in a number of different areas in the business.
 
 ## Technical Objective 
 Deploy a ["Container-based workload"](https://cloud.google.com/learn/what-are-containers) of some sort on small form factor devices to resemble a typical manufacturing environment.  (Since I don't have an Industrial Manufacturing Facility nor remote Cell Towers handy, I have devised a representative mockup.)
@@ -90,39 +90,9 @@ All of this data will then be sent to a "private AWS instance" for processing.  
 2. Jetbot pushes event data to MQTT Rec on SNO  
 3. AMQ processes queue and... ->  (TBC...)
 
-NVIDIA created an environment to process APS data - and I am (sort of) attempting to mimic that.   
+NVIDIA created an environment to process [Advanced Photon Source (APS) data](https://www.aps.anl.gov/) - and I am (sort of) attempting to mimic that.   
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
 Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
-
-## Demo - Build Environment
-Status:  In Progress
-
-* Deploy vSphere 
-* Deploy supporing infrastructure services
-  * DNS
-  * IDM
-  * PXE, WWW, TFTP, DHCP
-  * Network Attached Storage
-* Deploy OpenShift (on vSphere Cluster)  
-  * OpenShift
-  * OpenShift Data Foundations
-  * Quay / Clair
-  * Red Hat Advanced Cluster Management
-  * Red Hat Advanced Cluster Security
-* Deploy CI/CD services
-  * Red Hat OpenShift Pipeline
-  * Red Hat OpenShift GitOps
-* Deploy Single Node OpenShift 
-* Deploy/configure NVIDIA Jetson Xavier NX (with post-install to run Jetbot training models)  
-* Deploy/configure NVIDIA Jetson Jetbot image
-* Gather different sets of images from Jetbot
-  * dataset16 - 16" from "wall" as blocked  (estimate 20 images total)
-  * dataset4 - 4" from "wall" as blocked  (estimate 50 images total)
-  * NOTE: the dataset that will be utilized by Notebook will always be named dataset.zip 
-
-Once the entire ecosystem is built and functional, the demo will start with the Jetbot ingesting the model from dataset16 and demonstrate how it responds to "danger" when 16" away.
-
-## Demo - Showcase operations
 
 ## Get after it
 There's little/no point in my explaining how to make your Jetson bootable, as it's all detailed in the following overview:    
