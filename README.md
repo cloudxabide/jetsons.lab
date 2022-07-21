@@ -1,6 +1,6 @@
 # jetsons.lab
 
-NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge Middleware queing and processing, and downstream dashboard presentation with additional processing in the Data Center.  At a later phase (Q4 2022) public cloud (AWS) will be added for additional analytics and machine learning, reporting, executivte dashboards, etc..
+NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge Middleware queing and processing, and downstream dashboard presentation with additional processing in the Data Center.  At a later phase (Q4 2022) the plan is to introduce public cloud (AWS) for additional analytics and machine learning, reporting, executivte dashboards, etc..
 
 ## Overview
 First/foremost this lab is an entirely fictitous use-case and scenario.  It is a "Data Science" project with an emphasis on Data Engineering, that will integrate MLOps.
