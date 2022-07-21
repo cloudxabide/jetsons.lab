@@ -15,9 +15,9 @@ Once you have Fedora installed and running, install the following packages
 sudo dnf -y install qemu-user-static usbutils uboot-images-armv8 arm-image-installer screen minicom
 ```
 
-Pull down and unpack the Nvidia bits
+Pull down and unpack the NVIDIA bits
 ```
-mkdir ~/Downloads/Nvidia_Jetson; cd $_
+mkdir ~/Downloads/NVIDIA_Jetson; cd $_
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/jetson-210_linux_r32.6.1_aarch64.tbz2
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/tegra_linux_sample-root-filesystem_r32.6.1_aarch64.tbz2
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/webrtc_r32.6.1_aarch64.tbz2
@@ -41,7 +41,7 @@ tar -xvf ${L4T_RELEASE_PACKAGE}
 
 ## flash the Nano 
 ```
-cd ~/Downloads/Nvidia_Jetson/Linux_for_Tegra
+cd ~/Downloads/NVIDIA_Jetson/Linux_for_Tegra
 sudo ./flash.sh p3448-0000-max-spi external
 ```
 

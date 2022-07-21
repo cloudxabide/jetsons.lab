@@ -4,8 +4,8 @@
 
 | Device | Qty | |
 |:------|:--:|-|
-| Nvidia Jetson Nano Devkit 4gb | 3 | |
-| Nvidia Jetson Xavier NX Devkit  | 1 | |
+| NVIDIA Jetson Nano Devkit 4gb | 3 | |
+| NVIDIA Jetson Xavier NX Devkit  | 1 | |
 | Waveshare JetBot | 1 | |
 | NVIDIA Jetson Mate | 1 | |
 

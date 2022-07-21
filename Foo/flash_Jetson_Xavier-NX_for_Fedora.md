@@ -1,10 +1,10 @@
-# Install Microshift on Nvidia Jetson Xavier NX using Fedora
+# Install Microshift on NVIDIA Jetson Xavier NX using Fedora
 
 ## Purpose
 
 ## Requirements
 
-* Nvidia Jetson Xavier NX system 
+* NVIDIA Jetson Xavier NX system 
 * Ubuntu Laptop running 18.04 LTS (I'll explain this more in a different post)
 * USB-A to USB-micro-B cable
 
@@ -77,12 +77,12 @@ alternate_disk_method() {
 
 # I believe this partition is actually /boot/efi
 mount -o loop,offset=1048576   ${IMG_DIR}/${IMG_NAME}  /mnt/${BASE_NAME}-1
-rsync -tugrpolvv /mnt/1/ /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/boot/
+rsync -tugrpolvv /mnt/1/ /home/jradtke/Downloads/NVIDIA_Jetson/rootfs-Fedora-Server-35/boot/
 umount /mnt/1
 
 # I believe this partition is actually /boot
 mount -o loop,offset=630194176 ${IMG_DIR}/${IMG_NAME}  /mnt/${BASE_NAME}-2 
-rsync -tugrpolvv /mnt/2/ /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/boot/EFI/
+rsync -tugrpolvv /mnt/2/ /home/jradtke/Downloads/NVIDIA_Jetson/rootfs-Fedora-Server-35/boot/EFI/
 umount /mnt/2
 }
 ```
@@ -113,17 +113,17 @@ pvscan --cache
 vgchange -ay
 mount /dev/mapper/fedora_fedora-root /mnt/${BASE_NAME}-3 # 
 
-rsync -tugrpolvv /mnt/${BASE_NAME}-2/  /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/
-rsync -tugrpolvv /mnt/${BASE_NAME}-1/  /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/efi
-rsync -tugrpolvv  /mnt/${BASE_NAME}-3/ /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
+rsync -tugrpolvv /mnt/${BASE_NAME}-2/  /home/jradtke/Downloads/NVIDIA_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/
+rsync -tugrpolvv /mnt/${BASE_NAME}-1/  /home/jradtke/Downloads/NVIDIA_Jetson/Linux_for_Tegra-UEFI/rootfs/boot/efi
+rsync -tugrpolvv  /mnt/${BASE_NAME}-3/ /home/jradtke/Downloads/NVIDIA_Jetson/Linux_for_Tegra-UEFI/rootfs/
 
 umount /mnt/${BASE_NAME}-{1,2,3}
 vgchange -an fedora_fedora 
 
-#rsync -tugrpolvv /home/jradtke/Downloads/Nvidia_Jetson/rootfs-Fedora-Server-35/ /home/jradtke/Downloads/Nvidia_Jetson/Linux_for_Tegra-UEFI/rootfs/
+#rsync -tugrpolvv /home/jradtke/Downloads/NVIDIA_Jetson/rootfs-Fedora-Server-35/ /home/jradtke/Downloads/NVIDIA_Jetson/Linux_for_Tegra-UEFI/rootfs/
 ```
 
-## Flash the Nvidia Xavier NX
+## Flash the NVIDIA Xavier NX
 * Connect the USB cable between your laptop and the micro-USB socket on the carrier board
 * Place Xavier NX module in Force Reset Mode and power it on
   * For my specific system (Seeed Studio carrier board and NX Developer Kit module), I will place a jumper on pins 9 and 10 (see photo)
@@ -134,12 +134,12 @@ I run this as root (for now, anyhow)
 You should see the device and will see "7e19" which indicates you are in FRC
 ```
 # lsusb | grep -i nvidia
-Bus 001 Device 006: ID 0955:7e19 Nvidia Corp.
+Bus 001 Device 006: ID 0955:7e19 NVIDIA Corp.
 ```
 NOTE:  7e19 is specific to the Xavier and other devices may have a different code
 
 ```
-cd ~jradtke/Downloads/Nvidia_Jetson/Xavier_NX/Linux_for_Tegra-UEFI
+cd ~jradtke/Downloads/NVIDIA_Jetson/Xavier_NX/Linux_for_Tegra-UEFI
 sudo ./flash.sh jetson-xavier-nx-uefi-acpi internal
 *** The target t186ref has been flashed successfully. ***
 Reset the board to boot from internal eMMC.

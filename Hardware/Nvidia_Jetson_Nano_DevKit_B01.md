@@ -1,9 +1,9 @@
-# Nvidia Jetson Nano DevKit 4gb
+# NVIDIA Jetson Nano DevKit 4gb
 
 ## Models and references
-NOTE: There are 2 Nvidia Jetson Nano available at this time.  This can cause some confusion, I have found.  Additionally, there are different releases of each - B01, A01, etc...  
-The [Nvidia Jetson Nano 2gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit) version  
-and the [Nvidia Jetson Nano Developer Kit - 4gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) version.
+NOTE: There are 2 NVIDIA Jetson Nano available at this time.  This can cause some confusion, I have found.  Additionally, there are different releases of each - B01, A01, etc...  
+The [NVIDIA Jetson Nano 2gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit) version  
+and the [NVIDIA Jetson Nano Developer Kit - 4gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) version.
 
 | Type of Module | Module Name and P-number | Compatible developer kit | 
 |:------------:|:---------|:---------|
@@ -25,4 +25,4 @@ Source: [NVIDIA JETSON LINUX DRIVER PACKAGE QUICK START GUIDE](https://developer
 [NVIDIA Dev Kit User Guide](https://developer.download.nvidia.com/assets/embedded/secure/jetson/Nano/docs/NV_Jetson_Nano_Developer_Kit_User_Guide.pdf?lEs1ihOZtCmxEbzRWEIdyueQP9ibiiW4nbX2zubJQdvC2RBPCL8yOTgOKG3jLccgRAAGuPw9zLx0KBdnpxwTLehUA447uIva0N3rylAS4Qe8-2lpgVoyDkw5xOuJMzjIq4HbGSx9PMNgFaFiMpotkHg0EujX4V9Kqn-HQSGBguf_TKtsgn58FdOoP2w_GQpAPZU)
 
 ## My hardware
-P3448-0000 - Which is a B01 version of the Nvidia Jetson Nano Developer Kit (AFAIK)
+P3448-0000 - Which is a B01 version of the NVIDIA Jetson Nano Developer Kit (AFAIK)

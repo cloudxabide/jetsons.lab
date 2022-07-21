@@ -1,4 +1,4 @@
-# Nvidia Jetson Xavier-NX
+# NVIDIA Jetson Xavier-NX
 
 ## Preamble
 So - I kind of hate to start off a write-up with a bunch of negative stuff, but... this experience has kind of sucked thus far (and for once, I don't think COVID is to blame).
@@ -9,7 +9,7 @@ So - I kind of hate to start off a write-up with a bunch of negative stuff, but.
 The first part is regarding the "up-lift" of the Xavier by Seeed Studio.  I ordered the following for $849:  
 `Jetson SUB Mini PC-Blue with Jetson Xavier NX module, Aluminium case with cooling fan, 128GB SSD, WiFi, Antennas and pre-installed JetPack System`    
 
-![Nvidia Jetson SUB Mini PC](images/Xavier_unpackaged.jpeg)
+![NVIDIA Jetson SUB Mini PC](images/Xavier_unpackaged.jpeg)
 
 I probably should have paid more attention to the fact that there was no "Shipping and Handling" charge.  I have to admit that Seeed shipped it much sooner than they initially had quoted.  
 
@@ -25,7 +25,7 @@ OK - so, I buried the link to the Seeed Page down here to ensure you have a bett
 [Jetson SUB Mini PC-Blue with Jetson Xavier NX module, Aluminium case with cooling fan, 128GB SSD, WiFi, Antennas and pre-installed JetPack System](https://www.seeedstudio.com/Jetson-SUB-Mini-PC-Blue-p-5212.html)
 
 ## Things that matter...
-Seeed bundles the Nvidia Jetson Xavier NX in a Case (with wifi, SSD, pre-installed Nvidia Jetpack).  It's actually fairly cool looking and a great idea.  
+Seeed bundles the NVIDIA Jetson Xavier NX in a Case (with wifi, SSD, pre-installed NVIDIA Jetpack).  It's actually fairly cool looking and a great idea.  
 I notice some similarities with the Jetson Nano Devkit(s) I already have.  The ports/connectivity appear to be the same.
 
 ### Module Fan
@@ -33,7 +33,7 @@ The "processor fan" is flat/tight up against the clear case top (inevitably redu
 ### The Case bundle
 
 ### The micro-USB port
-I have an micro-USB cable from Nvidia from my Nvidia TV and it barely can be inserted in to the Jetson.  Hopefully that will not be an issue
+I have an micro-USB cable from NVIDIA from my NVIDIA TV and it barely can be inserted in to the Jetson.  Hopefully that will not be an issue
 
 ### Ethernet (RJ45) Jack
 I inserted a cable which has a fairly typical guard/flap over the retainer piece - the placement in the case makes it almost impossible to press the retainer to remove the cable.  Yay.

@@ -4,7 +4,7 @@
 This turned out to be a non-starter (for me).  There are some nuanced things I am not (yet) familiar with.  CentOS is going to be "on hold" for me.
 
 ## Goal/Purpose
-*hopefully* this doc will detail how to install CentOS 9 Stream on to an Nvidia Jetson Nano 2g.
+*hopefully* this doc will detail how to install CentOS 9 Stream on to an NVIDIA Jetson Nano 2g.
 
 -- Disclaimer:  I work at Red Hat.  That said, I am *not* an engineer, or part of a business unit that does engineering/development - but.. I *do* have access to those folks.  My point?  I probably will not figure this out on my own and I have some advantages while figuring this out that other folks may not have.
 Also - I think I will be writing some sort of doc to demystify some of the Nano nuances (what is an eMMC.. or SPI?)
@@ -13,7 +13,7 @@ I had wanted to use CentOS Stream on my laptop to do the prep work.  I discovere
 
 ## Versions
 CentOS: 9 Stream
-Nvidia SDK: r32.6.1
+NVIDIA SDK: r32.6.1
 
 ## What you need (physical)
 * laptop  
@@ -29,7 +29,7 @@ Nvidia SDK: r32.6.1
 
 * collect all the requirements (physical and software)  
 * Review the entire process prior to starting.  This is NOT my typical approach to problems (if I am being forthcoming).  However, I REALLY think it helps for this procedure - especially if you are as much of a n00b as I am.  
-* Flash the (??) on the Nvidia Jetson Nano   
+* Flash the (??) on the NVIDIA Jetson Nano   
 * Install a CentOS disk image on to an SD card  
 * Boot to CentOS 9
 
@@ -42,9 +42,9 @@ Once you have Fedora installed and running, install the following packages
 sudo dnf -y install qemu-user-static usbutils uboot-images-armv8 arm-image-installer sreen minicom
 ```
 
-Pull down and unpack the Nvidia bits
+Pull down and unpack the NVIDIA bits
 ```
-mkdir ~/Downloads/Nvidia_Jetson; cd $_
+mkdir ~/Downloads/NVIDIA_Jetson; cd $_
 # wget -r https://developer.nvidia.com/embedded/learn/jetson-nano-2gb-devkit-user-guide
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/jetson-210_linux_r32.6.1_aarch64.tbz2
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/tegra_linux_sample-root-filesystem_r32.6.1_aarch64.tbz2
@@ -58,7 +58,7 @@ echo "L4T_RELEASE_PACKAGE: $L4T_RELEASE_PACKAGE"
 echo "SAMPLE_FS_PACKAGE: $SAMPLE_FS_PACKAGE"
 ```
 
-This process I have gathered from Nvidia (and applied some minor tweaks)
+This process I have gathered from NVIDIA (and applied some minor tweaks)
 ```
   tar xf ${L4T_RELEASE_PACKAGE}
   cd Linux_for_Tegra/rootfs/
@@ -83,7 +83,7 @@ sudo ./flash.sh ${BOARD} mmcblk0p1
  
 ## References
 https://nullr0ute.com/2020/11/installing-fedora-on-the-nvidia-jetson-nano/   
-[Nvidia Linux for Tegra](https://developer.nvidia.com/embedded/linux-tegra) L4T   
+[NVIDIA Linux for Tegra](https://developer.nvidia.com/embedded/linux-tegra) L4T   
 [NVIDIA JETSON LINUX DRIVER PACKAGE QUICK START GUIDE](https://developer.download.nvidia.com/embedded/L4T/r32_Release_v4.4/r32_Release_v4.4-GMC3/T210/l4t_quick_start_guide.txt)  
 https://www.jetsonhacks.com/
 
