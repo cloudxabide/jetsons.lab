@@ -44,3 +44,12 @@ I decided that the barrel adapter was the better option.  I will leave the USB p
 | Nano Rack                         |  1  | $69    | [GeekPi Case w/Fans](https://www.amazon.com/gp/product/B085XSPV7G/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) | ZP-0089 |
 |                           total   | -   | 69     | | |
 
+
+### How it started...
+![Cluster View - Front](/images/da_cluster_front.png)
+![Cluster View - Rear](/images/da_cluster_rear.png)
+
+### How it's going...
+![My Gear](/images/gear_20220116.jpeg)
+![Da Jetbot](/images/da_jetbot.jpeg)
+
