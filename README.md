@@ -88,7 +88,9 @@ All of this data will then be sent to a "private AWS instance" for processing.  
 1a. push model back to Jetbot  
 1b. Jetbot executes learned model   
 2. Jetbot pushes event data to MQTT Rec on SNO  
-3. AMQ processes queue and... ->  (TBC...)
+3. AMQ processes queue and forwards data up to Application hosted on OpenShift to be aggregated, processed, and then be available in dashboards
+3a. AMQ processes queue and forwards data up to Application hosted on AWS Outposts to be aggregated, processed, and then forwarded to Public Cloud 
+4.  Data is sent to Public Cloud (not shown) to be ingested for storage, processed for analytics, prepared for presentation, then finally archived
 
 NVIDIA created an environment to process [Advanced Photon Source (APS) data](https://www.aps.anl.gov/) - and I am (sort of) attempting to mimic that.   
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
