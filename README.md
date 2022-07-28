@@ -92,6 +92,9 @@ All of this data will then be sent to a "private AWS instance" for processing.  
 3a. AMQ processes queue and forwards data up to Application hosted on AWS Outposts to be aggregated, processed, and then forwarded to Public Cloud 
 4.  Data is sent to Public Cloud (not shown) to be ingested for storage, processed for analytics, prepared for presentation, then finally archived
 
+### Hub and Spoke Cluster Management (OCP)
+![MatrixLab - Autonomous Edge - Cluster Management](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-Hub_and_Spoke.png)
+
 NVIDIA created an environment to process [Advanced Photon Source (APS) data](https://www.aps.anl.gov/) - and I am (sort of) attempting to mimic that.   
 ![NVIDIA PtychoNN Model Workflow](images/train-PtychoNN-768x523.png)  
 Credit: https://developer.nvidia.com/blog/facing-the-edge-data-challenge-with-hpc-ai/
