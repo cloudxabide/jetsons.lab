@@ -51,9 +51,10 @@ This solution will provide DevSecGitOps: (reword this <<< )
 | Code Scanning (static code analysis) | [Sonarqube](https://www.sonarqube.org/) | 
 | Code Testing                         | [Selinium](https://www.selenium.dev/) | 
 | Chat Integration                     | [Slack](https://slack.com/) | 
-| Automation - Edge Image Building     | tbd | 
+| Automation - Edge Image Building     | [Red Hat Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible) <BR>[Red Hat Image Builder](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/composing_a_customized_rhel_system_image/composer-description_composing-a-customized-rhel-system-image)
 | Cluster Management (for OCP)         | [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) |
 | Managed OCP Cluster (ROSA)           | [Red Hat OpenShift Service on AWS](https://www.redhat.com/en/technologies/cloud-computing/openshift/aws) 
+| Infrastructure Automation<BR>and Orchestration            | [Red Hat Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible)
 
 ### Considerations:
 
