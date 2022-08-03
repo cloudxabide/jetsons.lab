@@ -11,6 +11,8 @@ First/foremost this lab is an entirely fictitous use-case and scenario.  It is a
 | Q3-2022  | This is very much still a work in progress |
 | Q2-2022  | Initial Draft <BR> Researching hardware platforms and compute options |
 
+![Im A DevOps](images/Im_a_DevOps.png)
+
 ## The Challenge 
 Short version: a manufacturer needs to have an app deployed at "the edge" to run autonomous devices.  
 
