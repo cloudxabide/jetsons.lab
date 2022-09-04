@@ -1,6 +1,6 @@
 # jetsons.lab
 
-NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge Middleware queing and processing, and downstream dashboard presentation with additional processing in the Data Center.  At a later phase (Q4 2022) the plan is to introduce public cloud (AWS) for additional analytics and machine learning, reporting, executivte dashboards, etc..
+NVIDIA Jetson Lab Environment - exploring Autonomous Device Edge Compute with Edge devices, Middleware queing and processing, and downstream dashboard presentation with additional processing in the Data Center.  At a later phase (Q4 2022) the plan is to introduce public cloud (AWS) for additional analytics and machine learning, reporting, executivte dashboards, etc..
 
 ## Overview
 First/foremost this lab is an entirely fictitous use-case and scenario.  It is a "Data Science" project with an emphasis on Data Engineering, that will integrate MLOps.
@@ -85,7 +85,6 @@ All of this data will then be sent to a "private AWS instance" for processing.  
 
 ### Data Flow 
 ![MatrixLab - Autonoumous Edge Demo Environment - Data Flow](images/MATRIXLAB_-_Autonomous_Edge_Demo_Environment-DataFlow.png)
-**tbd** I should align these steps with the numeric representation in the image (below)
 
 1. Jetbot captures and stores images (separated in to a directoy labeled either "blocked" or "free") -> push images to Xavier NX for Model Training  
 1a. push model back to Jetbot  
