@@ -3,7 +3,6 @@
 ## Preamble
 So - I kind of hate to start off a write-up with a bunch of negative stuff, but... this experience has kind of sucked thus far (and for once, I don't think COVID is to blame).
 
-
 ## First Impressions
 ### Seeed Studio
 The first part is regarding the "up-lift" of the Xavier by Seeed Studio.  I ordered the following for $849:  
@@ -41,7 +40,6 @@ I inserted a cable which has a fairly typical guard/flap over the retainer piece
 ## First Boot
 Of course, and as expected, the Ubuntu install boots and runs like a champ.  
 
-
 ## Hardware Control
 I will most often be running my Xavier headless.  I statically assign an IP address via DHCP once I discover the MAC address and I will also use a USB cable connected to my Fedora laptop
 
@@ -64,3 +62,7 @@ $ free -g
 Mem:              7           0           6           0           0           6
 Swap:             3           0           3
 ```
+
+## References
+From what I can ascertain, I have a J2021 carrier board.  
+https://wiki.seeedstudio.com/reComputer_J2021_J202_Flash_Jetpack/
