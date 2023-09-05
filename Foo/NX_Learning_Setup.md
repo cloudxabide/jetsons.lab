@@ -1,15 +1,96 @@
 # NVIDIA Xavier NX - Learning to Fly
 
+## Install L4T and Supporting Jetson Runtime Components
+NOTE:  ONLY install L4T initially.  We will add the Jetson RunTime, etc... post-install.
 
+Since I purchased my NVIDIA Jetson Xavier NX Developer Kit from Seeed, I think it's a bit unique/bespoke.  
+I *think* the SOC includes an eMMC and then I have an NVMe SSD on my carrier board.
+
+| Type    | device  |  Size  | Purpose                           | Path          |
+|:-------:|:-------:|:------:|-----------------------------------|:--------------|
+| eMMC    | mmcblk0 | 16GB   | boot device                       | /             |
+| NVMe    | nvme0n1 | 128GB  | Jetson runtime, notebooks, etc... | TBD |
+
+While the eMMC is only 16GB and the default L4T consumes around 6G, finding an alternative to store/run the runtimes and notebooks is paramount.
+
+## Configure Xavier OS
 ```
+#sudo apt install -y openssh-server 
+#sudo systemctl enable ssh --now
+
+### NOT SURE THIS IS NEEDED 
+#sudo apt install -y ufw
+#sudo ufw allow ssh
+
 # Configure no-passwd sudo for nvidia user
 echo "nvidia ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/nvidia
 
-# Update the system
-sudo apt update; sudo apt upgrade -y 
+# Install Jetson Utilities
+sudo -H pip install -U jetson-stats
+# you need to run this while logged in to the desktop
+# sudo jtop
 
-# Install pre-reqs
-# https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+# Install Logical Volume Manager (clear out old LVM device)
+dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
+sudo apt install -y lvm2
+# Update the system
+sudo apt update; sudo apt upgrade -y && sudo shutdown now -r
+```
+
+### Configure the NVMe device for usage
+Status:  Still need to figure out what directories need their own volume (for growth and capacity)
+
+| Mount Point | Size | VolumeGroup | VolumeName   |
+|:-------------|:----|:------------|:-------------|
+| /usr/local/  | 6G  | vg_nvme     | lv_usr_local |
+| /opt         | 4G  | vg_nvme     | lv_opt       |    
+
+The following are installed:
+* Jetson Linux
+* Jetson Runtime Components
+* Jetson SDK Components
+
+/dev/mmcblk0p1   14G   12G  1.4G  90% /
+/dev/mapper/vg_nvme-lv_opt        5.9G  1.9G  3.7G  35% /opt
+/dev/mapper/vg_nvme-lv_usr_local  5.9G  1.3G  4.3G  23% /usr/local
+```
+sudo apt install -y lvm2
+sudo su -
+parted -s /dev/nvme0n1 mklabel gpt mkpart pri ext4 2048s 100% set 1 lvm on
+pvcreate /dev/nvme0n1p1
+vgcreate vg_nvme /dev/nvme0n1p1
+lvcreate -nlv_usr_local -L6g vg_nvme
+lvcreate -nlv_opt -L6g vg_nvme
+mkfs.ext4 /dev/mapper/vg_nvme-lv_opt
+mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_local
+
+# Update fstab
+cp /etc/fstab /etc/fstab.`date +%F`
+echo "/dev/mapper/vg_nvme-lv_opt /opt ext4 defaults 0 0" >> /etc/fstab
+echo "/dev/mapper/vg_nvme-lv_usr_local /usr/local ext4 defaults 0 0" >> /etc/fstab
+
+mkdir /usr/local.tmp /opt.tmp
+mount /dev/mapper/vg_nvme-lv_usr_local /usr/local.tmp/
+mount /dev/mapper/vg_nvme-lv_opt /opt.tmp/
+
+rsync -avE /usr/local/ /usr/local.tmp/
+rsync -avE /opt/ /opt.tmp/
+
+mv /opt /opt.old
+mv /usr/local /usr/local.old
+mkdir /opt /usr/local
+shutdown now -r
+
+# NOTE:  you can remove /usr/local.tmp /opt.tmp - once the reboot has occurred and system is functional
+
+```
+
+
+#  Update Xavier Jetson Runtimes
+
+### Install pre-reqs
+https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+```
 sudo apt-get -y install autoconf bc build-essential g++-8 gcc-8 clang-8 lld-8 gettext-base gfortran-8 iputils-ping libbz2-dev libc++-dev libcgal-dev libffi-dev libfreetype6-dev libhdf5-dev libjpeg-dev liblzma-dev libncurses5-dev libncursesw5-dev libpng-dev libreadline-dev libssl-dev libsqlite3-dev libxml2-dev libxslt-dev locales moreutils openssl python-openssl rsync scons python3-pip libopenblas-dev
 
 # This won't work on ARM64
@@ -46,12 +127,11 @@ case `sudo lshw -C systemshw -C system | grep product | awk -F\:\  '{ print $2 }
     echo "Not Supported"
   ;;
 esac
+```
 
-#
-sudo -H pip install -U jetson-stats
-# you need to run this while logged in to the desktop
-# sudo jtop
 
+## Jetbot Foo
+```
 cd
 [ ! -d jetbot ] && { git clone https://github.com/NVIDIA-AI-IOT/jetbot.git; } || { cd jetbot; git pull; cd; }
 
