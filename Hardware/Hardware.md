@@ -5,7 +5,7 @@
 | Device | Qty | |
 |:------|:--:|-|
 | NVIDIA Jetson Nano Devkit 4gb | 3 | |
-| NVIDIA Jetson Xavier NX Devkit  | 1 | |
+| NVIDIA Jetson Xavier NX Devkit  | 2 | |
 | Waveshare JetBot | 1 | |
 | NVIDIA Jetson Mate | 1 | |
 
@@ -52,4 +52,5 @@ I decided that the barrel adapter was the better option.  I will leave the USB p
 ### How it's going...
 ![My Gear](/images/gear_20220116.jpeg)
 ![Da Jetbot](/images/da_jetbot.jpeg)
+
 

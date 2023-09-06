@@ -42,6 +42,7 @@ Status:  Still need to figure out what directories need their own volume (for gr
 
 | Mount Point | Size | VolumeGroup | VolumeName   |
 |:-------------|:----|:------------|:-------------|
+| /var/lib/docker | 20G | vg_nvme  | lv_docker |
 | /usr/local/  | 6G  | vg_nvme     | lv_usr_local |
 | /opt         | 4G  | vg_nvme     | lv_opt       |    
 
@@ -50,9 +51,16 @@ The following are installed:
 * Jetson Runtime Components
 * Jetson SDK Components
 
-/dev/mmcblk0p1   14G   12G  1.4G  90% /
-/dev/mapper/vg_nvme-lv_opt        5.9G  1.9G  3.7G  35% /opt
-/dev/mapper/vg_nvme-lv_usr_local  5.9G  1.3G  4.3G  23% /usr/local
+Which consumes the following disk space:  
+/dev/mmcblk0p1   14G   12G  1.4G  90% /  
+/dev/mapper/vg_nvme-lv_opt        5.9G  1.9G  3.7G  35% /opt  
+/dev/mapper/vg_nvme-lv_usr_local  5.9G  1.3G  4.3G  23% /usr/local  
+
+And then after installing nvcr.io/nvidia/l4t-ml:r34.1.0-py3  
+/dev/mapper/vg_nvme-lv_docker      20G   16G  3.2G  84% /var/lib/docker
+
+As you can see, the Jetson is woefully unprepared to do anything useful in regards to available disk space.  
+
 ```
 sudo apt install -y lvm2
 sudo su -
@@ -61,11 +69,14 @@ pvcreate /dev/nvme0n1p1
 vgcreate vg_nvme /dev/nvme0n1p1
 lvcreate -nlv_usr_local -L6g vg_nvme
 lvcreate -nlv_opt -L6g vg_nvme
+lvcreate -nlv_docker -L20g vg_nvme
+mkfs.ext4 /dev/mapper/vg_nvme-lv_docker
 mkfs.ext4 /dev/mapper/vg_nvme-lv_opt
 mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_local
 
 # Update fstab
 cp /etc/fstab /etc/fstab.`date +%F`
+echo "/dev/mapper/vg_nvme-lv_docker /var/lib/docker ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_opt /opt ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_usr_local /usr/local ext4 defaults 0 0" >> /etc/fstab
 
@@ -86,7 +97,7 @@ shutdown now -r
 ```
 
 
-#  Update Xavier Jetson Runtimes
+#  Update Xavier Jetson Runtimes (from CLI)
 
 ### Install pre-reqs
 https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
