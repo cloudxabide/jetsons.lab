@@ -139,6 +139,13 @@ case `sudo lshw -C systemshw -C system | grep product | awk -F\:\  '{ print $2 }
   ;;
 esac
 ```
+## Setup Wifi
+```
+nmcli radio wifi on
+nmcli d wifi show
+nmcli -a d wifi connect "REVOLUTIONS"
+# nmcli -a d wifi connect "REVOLUTIONS" password <pass>
+```
 
 
 ## Jetbot Foo
