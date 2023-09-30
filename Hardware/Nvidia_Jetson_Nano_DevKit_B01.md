@@ -3,7 +3,7 @@
 ## Models and references
 NOTE: There are 2 NVIDIA Jetson Nano available at this time.  This can cause some confusion, I have found.  Additionally, there are different releases of each - B01, A01, etc...  
 The [NVIDIA Jetson Nano 2gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit) version  
-and the [NVIDIA Jetson Nano Developer Kit - 4gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) version.
+and [NVIDIA Jetson Nano Developer Kit - 4gb](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) which is the version, I have.
 
 | Type of Module | Module Name and P-number | Compatible developer kit | 
 |:------------:|:---------|:---------|
