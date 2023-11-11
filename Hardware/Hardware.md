@@ -53,4 +53,6 @@ I decided that the barrel adapter was the better option.  I will leave the USB p
 ![My Gear](/images/gear_20220116.jpeg)
 ![Da Jetbot](/images/da_jetbot.jpeg)
 
+## References
+[Intel® NUC 10 Performance kit - NUC10i7FNK](https://www.intel.com/content/www/us/en/products/sku/188808/intel-nuc-10-performance-kit-nuc10i7fnk/specifications.html)
 
