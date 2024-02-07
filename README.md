@@ -42,13 +42,13 @@ This solution will provide DevSecGitOps: (reword this <<< )
 | Function                             | Product (proposed)
 |:-------------------------------------|:-----------------------------------|
 | Source Control Management (SCM)      | [GitHub](https://github.com/)      | 
-| Container Registry                   | [Red Hat Quay](https://access.redhat.com/products/red-hat-quay) | 
+| Container Registry                   | [Amazon ECR](https://aws.amazon.com/ecr) <BR> [DockerHub](https://hub.docker.com/) |
 | Binary/Package Repository            | [Nexus](https://www.sonatype.com/products/nexus-repository)
 | Container Hosting (Cloud)            | [EKS](https://aws.amazon.com/eks/)
 | Container Hosting (on-prem)          | [EKS Anywhere (EKS-A](https://aws.amazon.com/eks/eks-anywhere/)
 | Platform Scanning                    | [TBD - maybe Sysdig?](https://sysdig.com/s-kubernetes-security-guide)
 | Container Scanning                   | [Aqua Trivy](https://github.com/aquasecurity/trivy)
-| Container Orchestration              | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) <BR> (Red Hat OpenShift GitOps) | 
+| Container Orchestration              | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) |
 | Code Scanning (static code analysis) | [Sonarqube](https://www.sonarqube.org/) | 
 | Code Testing                         | [Selinium](https://www.selenium.dev/) | 
 | Chat Integration                     | [Slack](https://slack.com/) | 
