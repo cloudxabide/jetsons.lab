@@ -8,8 +8,9 @@ First/foremost this lab is an entirely fictitous use-case and scenario.  It is a
 ## Status  
 | Timeline | Status Overview |
 |:---------|:----------------|
-| Q3-2022  | This is very much still a work in progress |
-| Q2-2022  | Initial Draft <BR> Researching hardware platforms and compute options |
+| 2024-Q1  | Revisiting and refactoring to use EKS - This needs a LOT of work to be updated |
+| 2022-Q3  | This is very much still a work in progress |
+| 2022-Q2  | Initial Draft <BR> Researching hardware platforms and compute options |
 
 ![Im A DevOps](images/Im_a_DevOps.png)
 
@@ -23,16 +24,14 @@ Deploy a ["Container-based workload"](https://cloud.google.com/learn/what-are-co
 
 Starting with "the cloud", to the "Data Center" and moving towards the Edge:
 * Cloud (public)
-  * Red Hat OpenShift Service on AWS (ROSA) 
+  * Amazon EKS
   * Cloud-native services
     * S3 object storage
-    * Lambda 
 * Data Center
-  * 3-node Intel - VMware Cluster
-    * Red Hat OpenShift 
-  * 1-node Intel - freeNAS 
+  * 3-node Intel NUC
+    * EKS Anywhere
 * "Edge" (simulated) (AKA "Far Edge" or "Near Edge")
-  * Intel NUC - Red Hat Enterprise Linux running Podman, managed by Ansible
+  * Intel NUC - Ubuntu 22.04 "Admin Host"
   * NVIDIA Jetson Xavier NX - Linux for Tegra (L4T)
 * Device Edge
   * NVIDIA Jetson - Waveshare Jetbot Software
@@ -45,17 +44,14 @@ This solution will provide DevSecGitOps: (reword this <<< )
 | Source Control Management (SCM)      | [GitHub](https://github.com/)      | 
 | Container Registry                   | [Red Hat Quay](https://access.redhat.com/products/red-hat-quay) | 
 | Binary/Package Repository            | [Nexus](https://www.sonatype.com/products/nexus-repository)
-| Container Hosting                    | [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) | 
-| Platform Scanning                    | [Red Hat OpenShift - Compliance Operator](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/security_and_compliance/compliance-operator) | 
-| Container Scanning                   | [Red Hat Advanced Cluster Security](https://www.redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)
+| Container Hosting (Cloud)            | [EKS](https://aws.amazon.com/eks/)
+| Container Hosting (on-prem)          | [EKS Anywhere (EKS-A](https://aws.amazon.com/eks/eks-anywhere/)
+| Platform Scanning                    | [TBD - maybe Sysdig?](https://sysdig.com/s-kubernetes-security-guide)
+| Container Scanning                   | [Aqua Trivy](https://github.com/aquasecurity/trivy)
 | Container Orchestration              | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) <BR> (Red Hat OpenShift GitOps) | 
-| Pipeline Automation                  | [Tekton](https://tekton.dev/) <BR> (Red Hat OpenShift Pipline) | 
 | Code Scanning (static code analysis) | [Sonarqube](https://www.sonarqube.org/) | 
 | Code Testing                         | [Selinium](https://www.selenium.dev/) | 
 | Chat Integration                     | [Slack](https://slack.com/) | 
-| Automation - Edge Image Building     | [Red Hat Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible) <BR>[Red Hat Image Builder](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/composing_a_customized_rhel_system_image/composer-description_composing-a-customized-rhel-system-image)
-| Cluster Management (for OCP)         | [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) |
-| Managed OCP Cluster (ROSA)           | [Red Hat OpenShift Service on AWS](https://www.redhat.com/en/technologies/cloud-computing/openshift/aws) 
 | Infrastructure Automation<BR>and Orchestration            | [Red Hat Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible)
 
 ### Considerations:
