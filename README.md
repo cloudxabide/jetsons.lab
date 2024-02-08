@@ -75,7 +75,7 @@ At the Device Edge, the Waveshare Jetbot is a customized ROM based on NVIDIA Jet
 
 Next, the Edge (Far Edge/Near Edge) will be the focus where additional compute will accept feedback from the Device Edge - Jetbot regarding the environmental situations it encounters (avoidance events, etc...)  This will be accomplished by an Intel NUC running RHEL 8 with Podman.  This host will be running [Red Hat AMQ](https://www.redhat.com/en/technologies/jboss-middleware/amq) and [Apache Kafka](https://kafka.apache.org/) using [MQTT protocol](https://en.wikipedia.org/wiki/MQTT) to communicate.
 
-Next, the Data Center will host [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
+Next, the "Data Center" will host [EKS Anywhere (EKS-A)](https://aws.amazon.com/eks/eks-anywhere/) which will accept the aggregated data from the Edge tier for presentation, archival, additional processing, etc...  (I haven't exactly figured out exactly what all this tier will entail)
 
 All of this data will then be sent to a "private AWS instance" for processing.  Once the analysis has been done, the resulting data will then be forwarded to another AWS account which is responsible for presentation of the data.
 
