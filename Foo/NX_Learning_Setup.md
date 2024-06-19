@@ -31,7 +31,7 @@ sudo -H pip install -U jetson-stats
 # sudo jtop
 
 # Install Logical Volume Manager (clear out old LVM device)
-dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
+sudo dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
 sudo apt install -y lvm2
 # Update the system
 sudo apt update; sudo apt upgrade -y && sudo shutdown now -r
@@ -62,40 +62,65 @@ And then after installing nvcr.io/nvidia/l4t-ml:r34.1.0-py3
 As you can see, the Jetson is woefully unprepared to do anything useful in regards to available disk space.  
 
 ```
-sudo apt install -y lvm2
+# Configure no-passwd sudo for nvidia user
+echo "nvidia ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/nvidia
+
 sudo su -
+wipefs -af /dev/nvme0n1
+sudo apt install -y lvm2
+[ `vgs | grep vg_nvme` ] && vgremove -f vg_nvme # just a good measure
 parted -s /dev/nvme0n1 mklabel gpt mkpart pri ext4 2048s 100% set 1 lvm on
 pvcreate /dev/nvme0n1p1
 vgcreate vg_nvme /dev/nvme0n1p1
-lvcreate -nlv_usr_local -L6g vg_nvme
-lvcreate -nlv_opt -L6g vg_nvme
-lvcreate -nlv_docker -L20g vg_nvme
+lvcreate -nlv_docker -L40g vg_nvme
+lvcreate -nlv_opt -L20g vg_nvme
+lvcreate -nlv_usr_local -L10g vg_nvme
 mkfs.ext4 /dev/mapper/vg_nvme-lv_docker
 mkfs.ext4 /dev/mapper/vg_nvme-lv_opt
 mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_local
 
 # Update fstab
 cp /etc/fstab /etc/fstab.`date +%F`
+echo "# Volumes on NVMe device" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_docker /var/lib/docker ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_opt /opt ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_usr_local /usr/local ext4 defaults 0 0" >> /etc/fstab
 
-mkdir /usr/local.tmp /opt.tmp
-mount /dev/mapper/vg_nvme-lv_usr_local /usr/local.tmp/
+mkdir /usr/local.tmp /opt.tmp 
 mount /dev/mapper/vg_nvme-lv_opt /opt.tmp/
+mount /dev/mapper/vg_nvme-lv_usr_local /usr/local.tmp/
 
-rsync -avE /usr/local/ /usr/local.tmp/
 rsync -avE /opt/ /opt.tmp/
+rsync -avE /usr/local/ /usr/local.tmp/
 
 mv /opt /opt.old
 mv /usr/local /usr/local.old
-mkdir /opt /usr/local
+#mv /usr/lib /usr/lib.old (this will not work - use the BIND mount approach below)
+mkdir /opt /usr/local 
 shutdown now -r
 
-# NOTE:  you can remove /usr/local.tmp /opt.tmp - once the reboot has occurred and system is functional
 
+
+
+# I don't know whether migrating /usr/lib from / to another volume is going to work
+lvcreate -nlv_usr_lib -L10g vg_nvme
+mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_lib
+echo "/dev/mapper/vg_nvme-lv_usr_lib /usr/lib ext4 defaults 0 0" >> /etc/fstab
+mkdir /usr/lib.tmp
+mount /dev/mapper/vg_nvme-lv_usr_lib /usr/lib.tmp/
+rsync -avE /usr/lib/ /usr/lib.tmp/
+sudo su -
+mount --bind / /mnt
+rm -rf /mnt/usr/lib
+umount /mnt
+exit
+
+# NOTE:  you can remove /usr/local.tmp /opt.tmp - once the reboot has occurred and system is functional
 ```
 
+## TODO
+-- need to mount nvidia home directory in /opt (or a bigger filesystem).  OR... use a different user to install NVIDIA SDK bits
+-- this is because the SDK installer will reach out to the Xavier NX (as the user you define) and run df -h -T . (so, in their home directory)
 
 #  Update Xavier Jetson Runtimes (from CLI)
 
@@ -123,6 +148,7 @@ case `sudo lshw -C systemshw -C system | grep product | awk -F\:\  '{ print $2 }
         pip3 install torch torchvision torchaudio
       ;;
       'Ubuntu 20.04.4 LTS')
+        pip install networkx==3.1
         pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
       ;;
     esac
@@ -139,6 +165,7 @@ case `sudo lshw -C systemshw -C system | grep product | awk -F\:\  '{ print $2 }
   ;;
 esac
 ```
+
 ## Setup Wifi
 ```
 nmcli radio wifi on
