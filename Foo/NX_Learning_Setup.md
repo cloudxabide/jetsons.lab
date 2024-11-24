@@ -31,7 +31,6 @@ sudo -H pip install -U jetson-stats
 # sudo jtop
 
 # Install Logical Volume Manager (clear out old LVM device)
-sudo dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
 sudo apt install -y lvm2
 # Update the system
 sudo apt update; sudo apt upgrade -y && sudo shutdown now -r
@@ -66,8 +65,11 @@ As you can see, the Jetson is woefully unprepared to do anything useful in regar
 echo "nvidia ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/nvidia
 
 sudo su -
+apt install -y lvm2
+apt-get install --non-interactive scsitools
+rescan-scsi-bus
+dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
 wipefs -af /dev/nvme0n1
-sudo apt install -y lvm2
 [ `vgs | grep vg_nvme` ] && vgremove -f vg_nvme # just a good measure
 parted -s /dev/nvme0n1 mklabel gpt mkpart pri ext4 2048s 100% set 1 lvm on
 pvcreate /dev/nvme0n1p1
