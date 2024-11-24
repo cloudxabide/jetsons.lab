@@ -30,6 +30,11 @@ sudo -H pip install -U jetson-stats
 # you need to run this while logged in to the desktop
 # sudo jtop
 
+# Need to remove all the unnecessary stuff - like libreOffice (add commands to do this later)
+sudo apt-get remove --purge "libreoffice*"
+sudo apt-get clean
+sudo apt-get autoremove
+
 # Install Logical Volume Manager (clear out old LVM device)
 sudo dd if=/dev/zero of=/dev/nvme0n1 bs=512 count=102400
 sudo apt install -y lvm2
@@ -96,13 +101,12 @@ rsync -avE /usr/local/ /usr/local.tmp/
 mv /opt /opt.old
 mv /usr/local /usr/local.old
 #mv /usr/lib /usr/lib.old (this will not work - use the BIND mount approach below)
-mkdir /opt /usr/local 
+mkdir /opt /usr/local  /var/lib/docker
 shutdown now -r
 
 
-
-
 # I don't know whether migrating /usr/lib from / to another volume is going to work
+migrate_usr_lib() {
 lvcreate -nlv_usr_lib -L10g vg_nvme
 mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_lib
 echo "/dev/mapper/vg_nvme-lv_usr_lib /usr/lib ext4 defaults 0 0" >> /etc/fstab
@@ -113,7 +117,7 @@ sudo su -
 mount --bind / /mnt
 rm -rf /mnt/usr/lib
 umount /mnt
-exit
+}
 
 # NOTE:  you can remove /usr/local.tmp /opt.tmp - once the reboot has occurred and system is functional
 ```
