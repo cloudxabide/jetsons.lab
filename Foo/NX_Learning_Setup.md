@@ -181,6 +181,7 @@ nmcli -a d wifi connect "REVOLUTIONS"
 ```
 
 # bump cores/power on the Xavier NX
+https://docs.nvidia.com/jetson/archives/l4t-archived/l4t-3275/index.html#page/Tegra%20Linux%20Driver%20Package%20Development%20Guide/power_management_jetson_xavier.html#wwpID0E0NO0HA
 ```
 nvpmodel -m 6
 ```
