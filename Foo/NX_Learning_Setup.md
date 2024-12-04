@@ -180,6 +180,10 @@ nmcli -a d wifi connect "REVOLUTIONS"
 # nmcli -a d wifi connect "REVOLUTIONS" password <pass>
 ```
 
+# bump cores/power on the Xavier NX
+```
+nvpmodel -m 6
+```
 
 ## Jetbot Foo
 ```
