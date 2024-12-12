@@ -80,9 +80,11 @@ parted -s /dev/nvme0n1 mklabel gpt mkpart pri ext4 2048s 100% set 1 lvm on
 pvcreate /dev/nvme0n1p1
 vgcreate vg_nvme /dev/nvme0n1p1
 lvcreate -nlv_docker -L40g vg_nvme
+lvcreate -nlv_rancher -L40g vg_nvme
 lvcreate -nlv_opt -L20g vg_nvme
 lvcreate -nlv_usr_local -L10g vg_nvme
 mkfs.ext4 /dev/mapper/vg_nvme-lv_docker
+mkfs.ext4 /dev/mapper/vg_nvme-lv_rancher
 mkfs.ext4 /dev/mapper/vg_nvme-lv_opt
 mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_local
 
@@ -90,6 +92,7 @@ mkfs.ext4 /dev/mapper/vg_nvme-lv_usr_local
 cp /etc/fstab /etc/fstab.`date +%F`
 echo "# Volumes on NVMe device" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_docker /var/lib/docker ext4 defaults 0 0" >> /etc/fstab
+echo "/dev/mapper/vg_nvme-lv_rancher /var/lib/rancher ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_opt /opt ext4 defaults 0 0" >> /etc/fstab
 echo "/dev/mapper/vg_nvme-lv_usr_local /usr/local ext4 defaults 0 0" >> /etc/fstab
 
@@ -103,7 +106,7 @@ rsync -avE /usr/local/ /usr/local.tmp/
 mv /opt /opt.old
 mv /usr/local /usr/local.old
 #mv /usr/lib /usr/lib.old (this will not work - use the BIND mount approach below)
-mkdir /opt /usr/local  /var/lib/docker
+mkdir /opt /usr/local  /var/lib/docker /var/lib/rancher
 shutdown now -r
 
 
