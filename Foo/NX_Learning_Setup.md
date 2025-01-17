@@ -186,7 +186,7 @@ nmcli -a d wifi connect "REVOLUTIONS"
 # bump cores/power on the Xavier NX
 https://docs.nvidia.com/jetson/archives/l4t-archived/l4t-3275/index.html#page/Tegra%20Linux%20Driver%20Package%20Development%20Guide/power_management_jetson_xavier.html#wwpID0E0NO0HA
 ```
-nvpmodel -m 6
+nvpmodel -m 8
 ```
 
 ## Jetbot Foo
@@ -202,7 +202,7 @@ cd
 mkdir $HOME/Notebooks
 rsync -tugrpolvv ${HOME}/jetbot/notebooks/* ~/Notebooks/
 
-sudo nvpmodel -m1
+sudo nvpmodel -m2
 
 sudo docker pull nvcr.io/nvidia/l4t-ml:r34.1.0-py3
 #sudo docker run -it --rm --runtime nvidia --network host nvcr.io/nvidia/l4t-ml:r34.1.0-py3
