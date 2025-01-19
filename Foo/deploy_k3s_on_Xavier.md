@@ -5,7 +5,10 @@
 Install k3s using https://www.suse.com/c/ai-at-the-edge-with-k3s-nvidia-jetson-nano-object-detection-real-time-video-analytics-src/
 
 ```
-sudo apt update sudo apt upgrade -y sudo apt install curl
+sudo apt update 
+sudo apt upgrade -y 
+sudo apt install curl
+
 case `sudo lshw | awk -F\: '{ print $2 }' | grep "NVIDIA Jetson` in
   "NVIDIA Jetson Xavier NX Developer Kit")
     sudo nvpmodel -m 8
